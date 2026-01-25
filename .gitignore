@@ -1,0 +1,87 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# API Keys & Secrets
+.env
+.env.local
+credentials/
+*.pem
+*.key
+
+# Data files (large files not in git)
+data/raw/*
+data/interim/*
+data/processed/*
+!data/raw/.gitkeep
+!data/raw/sample_queries.json
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+
+# Vector stores (large binary files)
+*.faiss
+*.index
+chroma_db/
+*.duckdb
+
+# Models & Embeddings
+models/*.pkl
+models/*.bin
+models/*.pt
+!models/prompts/
+data/cache/*
+
+# Reports (keep structure, not artifacts)
+reports/figures/*
+reports/metrics/*
+!reports/figures/.gitkeep
+!reports/metrics/.gitkeep
+!reports/PORTFOLIO_SUMMARY.md
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+.hypothesis/
+
+# Type checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Docker
+*.log
+docker-compose.override.yml

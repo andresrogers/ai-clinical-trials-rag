@@ -1,11 +1,209 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "biotech-trial-forecasting"
-version = "0.0.0"
-description = "Portfolio RAG project for Phase III trial success prediction"
+version = "0.1.0"
+description = "RAG-powered Phase III clinical trial success predictor with LangChain, LlamaIndex, and advanced evaluation"
+readme = "README.md"
 requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+	{name = "Andres Rogers", email = "andres.rogers@gmail.com"}
+]
+keywords = [
+	"rag", "llm", "langchain", "llamaindex", "clinical-trials", 
+	"biotech", "vector-database", "prompt-engineering", "ai-portfolio"
+]
+classifiers = [
+	"Development Status :: 4 - Beta",
+	"Intended Audience :: Science/Research",
+	"Intended Audience :: Healthcare Industry",
+	"License :: OSI Approved :: MIT License",
+	"Programming Language :: Python :: 3.11",
+	"Programming Language :: Python :: 3.12",
+	"Topic :: Scientific/Engineering :: Artificial Intelligence",
+	"Topic :: Scientific/Engineering :: Medical Science Apps.",
+]
 
-[project.dependencies]
-fastapi = "^0.95.0"
-uvicorn = {version = "^0.22.0", optional = true}
-streamlit = {version = "^1.24.0", optional = true}
-pytest = {version = "^7.0.0", optional = true}
+# Runtime dependencies for RAG pipeline
+dependencies = [
+	# Core LLM frameworks
+	"langchain>=0.1.0",
+	"langchain-openai>=0.0.5",
+	"langchain-community>=0.0.20",
+	"llama-index>=0.10.0",
+	"llama-index-embeddings-openai>=0.1.0",
+    
+	# Vector stores
+	"chromadb>=0.4.22",
+	"pinecone-client>=3.0.0",
+    
+	# LLM clients & embeddings
+	"openai>=1.12.0",
+	"tiktoken>=0.5.2",
+	"sentence-transformers>=2.3.1",
+    
+	# PDF processing
+	"PyPDF2>=3.0.1",
+	"pdfplumber>=0.10.3",
+	"PyMuPDF>=1.23.0",
+	"pydrive2>=1.17.0",
+    
+	# Data processing
+	"pandas>=2.1.0",
+	"polars>=0.20.0",
+	"numpy>=1.24.0",
+    
+	# Evaluation frameworks
+	"ragas>=0.1.0",
+	"rouge-score>=0.1.2",
+	"bert-score>=0.3.13",
+    
+	# API & deployment
+	"fastapi>=0.109.0",
+	"uvicorn[standard]>=0.27.0",
+	"streamlit>=1.31.0",
+	"python-multipart>=0.0.6",
+    
+	# Utilities
+	"python-dotenv>=1.0.0",
+	"loguru>=0.7.2",
+	"pydantic>=2.6.0",
+	"pydantic-settings>=2.1.0",
+	"tenacity>=8.2.3",
+	"diskcache>=5.6.3",
+	"pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+	"jupyter>=1.0.0",
+	"jupyterlab>=4.0.0",
+	"ipykernel>=6.25.0",
+	"notebook>=7.0.0",
+	"ipywidgets>=8.1.0",
+	"pytest>=7.4.0",
+	"pytest-cov>=4.1.0",
+	"pytest-asyncio>=0.23.0",
+	"black>=23.12.0",
+	"ruff>=0.1.11",
+	"mypy>=1.8.0",
+	"pre-commit>=3.6.0",
+	"httpx>=0.26.0",
+]
+
+mlops = [
+	"mlflow>=2.10.0",
+	"wandb>=0.16.0",
+]
+
+agents = [
+	"langgraph>=0.0.20",
+	"langchain-experimental>=0.0.50",
+]
+
+all = [
+	"jupyter>=1.0.0",
+	"jupyterlab>=4.0.0",
+	"ipykernel>=6.25.0",
+	"notebook>=7.0.0",
+	"ipywidgets>=8.1.0",
+	"pytest>=7.4.0",
+	"pytest-cov>=4.1.0",
+	"pytest-asyncio>=0.23.0",
+	"black>=23.12.0",
+	"ruff>=0.1.11",
+	"mypy>=1.8.0",
+	"pre-commit>=3.6.0",
+	"httpx>=0.26.0",
+	"mlflow>=2.10.0",
+	"wandb>=0.16.0",
+	"langgraph>=0.0.20",
+	"langchain-experimental>=0.0.50",
+]
+
+[project.urls]
+Homepage = "https://github.com/andresrogers/ai-clinical-trials-rag"
+Documentation = "https://github.com/andresrogers/ai-clinical-trials-rag#readme"
+Repository = "https://github.com/andresrogers/ai-clinical-trials-rag"
+Issues = "https://github.com/andresrogers/ai-clinical-trials-rag/issues"
+
+[project.scripts]
+biotech-index = "biotech_rag.cli:index_documents"
+biotech-query = "biotech_rag.cli:query_rag"
+biotech-eval = "biotech_rag.cli:run_evaluation"
+biotech-serve = "biotech_rag.cli:serve_api"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["biotech_rag*"]
+namespaces = false
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  \.eggs
+  | \.git
+  | \.venv
+  | build
+  | dist
+  | data
+  | models
+)/
+'''
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+select = [
+	"E",
+	"W",
+	"F",
+	"I",
+	"B",
+	"C4",
+	"UP",
+	"ANN",
+]
+ignore = [
+	"E501",
+	"B008",
+	"ANN101",
+	"ANN102",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+	"--verbose",
+	"--cov=src/biotech_rag",
+	"--cov-report=html",
+	"--cov-report=term-missing",
+	"--cov-fail-under=70",
+	"--asyncio-mode=auto",
+]
+markers = [
+	"slow: marks tests as slow (deselect with '-m \"not slow\"')",
+	"integration: marks tests as integration tests",
+	"requires_api: marks tests that need API keys",
+]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+exclude = ["tests/", "notebooks/"]
+

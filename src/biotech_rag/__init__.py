@@ -1,3 +1,4 @@
-"""biotech_rag package."""
+"""biotech_rag package entry point."""
 
-__all__ = []
+__version__ = "0.1.0"
+__all__ = ["config", "data", "indexing", "retrieval", "generation", "evaluation", "api", "utils"]

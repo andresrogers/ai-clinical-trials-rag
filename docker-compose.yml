@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+    command: uvicorn biotech_rag.api.app:app --host 0.0.0.0 --port 8000 --reload
+
+  streamlit:
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ./data:/app/data
+      - ./app:/app/app
+    command: streamlit run app/streamlit_app.py --server.port 8501 --server.address 0.0.0.0
+
+  # Optional: Chroma vector database as separate service
+  # chroma:
+  #   image: ghcr.io/chroma-core/chroma:latest
+  #   ports:
+  #     - "8002:8000"
+  #   volumes:
+  #     - ./data/processed/vectorstore/chroma:/chroma/chroma
