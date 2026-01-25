@@ -1,4 +1,4 @@
-# 🧬 Biotech Trial Forecasting: Phase III Success Predictor
+# 🧬 ai-clinical-trials-rag: Phase III Success Predictor
 
 > **Production-ready RAG system predicting clinical trial outcomes with 89% F1-score, 95% faithfulness, and 35% token efficiency**
 

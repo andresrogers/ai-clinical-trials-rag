@@ -48,7 +48,7 @@ class Settings(BaseSettings):
 	chroma_persist_dir: Path = VECTORSTORE_DIR / "chroma"
 	pinecone_api_key: str | None = os.getenv("PINECONE_API_KEY")
 	pinecone_environment: str = os.getenv("PINECONE_ENVIRONMENT", "us-west1-gcp")
-	pinecone_index_name: str = os.getenv("PINECONE_INDEX_NAME", "biotech-trials")
+	pinecone_index_name: str = os.getenv("PINECONE_INDEX_NAME", "ai-clinical-trials-rag")
 
 	# Google Drive
 	google_drive_folder_id: str | None = os.getenv("GOOGLE_DRIVE_FOLDER_ID")
@@ -77,7 +77,7 @@ class Settings(BaseSettings):
 
 	# MLflow (optional)
 	mlflow_tracking_uri: str | None = os.getenv("MLFLOW_TRACKING_URI")
-	mlflow_experiment_name: str = os.getenv("MLFLOW_EXPERIMENT_NAME", "biotech-trial-rag")
+	mlflow_experiment_name: str = os.getenv("MLFLOW_EXPERIMENT_NAME", "ai-clinical-trials-rag")
 
 	class Config:
 		env_file = ".env"

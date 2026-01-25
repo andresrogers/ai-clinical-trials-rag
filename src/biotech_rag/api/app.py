@@ -2,7 +2,7 @@
 
 from fastapi import FastAPI
 
-app = FastAPI(title="Biotech Trial Forecasting API")
+app = FastAPI(title="ai-clinical-trials-rag API")
 
 
 @app.get("/health")

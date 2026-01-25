@@ -16,6 +16,7 @@ ENV/
 *.ipynb_checkpoints
 
 # API Keys & Secrets
+.github/
 .env
 .env.local
 credentials/

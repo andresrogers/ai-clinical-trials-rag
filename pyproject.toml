@@ -3,11 +3,11 @@ requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "biotech-trial-forecasting"
+name = "ai-clinical-trials-rag"
 version = "0.1.0"
 description = "RAG-powered Phase III clinical trial success predictor with LangChain, LlamaIndex, and advanced evaluation"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.10.11"
 license = {text = "MIT"}
 authors = [
 	{name = "Andres Rogers", email = "andres.rogers@gmail.com"}
@@ -131,10 +131,10 @@ Repository = "https://github.com/andresrogers/ai-clinical-trials-rag"
 Issues = "https://github.com/andresrogers/ai-clinical-trials-rag/issues"
 
 [project.scripts]
-biotech-index = "biotech_rag.cli:index_documents"
-biotech-query = "biotech_rag.cli:query_rag"
-biotech-eval = "biotech_rag.cli:run_evaluation"
-biotech-serve = "biotech_rag.cli:serve_api"
+ai-clinical-trials-index = "biotech_rag.cli:index_documents"
+ai-clinical-trials-query = "biotech_rag.cli:query_rag"
+ai-clinical-trials-eval = "biotech_rag.cli:run_evaluation"
+ai-clinical-trials-serve = "biotech_rag.cli:serve_api"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

@@ -34,7 +34,7 @@ def serve_api(args: List[str] | None = None) -> int:
 
 
 def _build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="biotech-rag")
+    parser = argparse.ArgumentParser(prog="ai-clinical-trials-rag")
     sub = parser.add_subparsers(dest="cmd")
 
     sub.add_parser("index", help="Index documents")
