@@ -1,0 +1,11 @@
+[project]
+name = "biotech-trial-forecasting"
+version = "0.0.0"
+description = "Portfolio RAG project for Phase III trial success prediction"
+requires-python = ">=3.11"
+
+[project.dependencies]
+fastapi = "^0.95.0"
+uvicorn = {version = "^0.22.0", optional = true}
+streamlit = {version = "^1.24.0", optional = true}
+pytest = {version = "^7.0.0", optional = true}
