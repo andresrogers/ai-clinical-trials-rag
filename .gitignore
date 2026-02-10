@@ -37,6 +37,12 @@ data/processed/*
 !data/raw/sample_queries.json
 !data/interim/.gitkeep
 !data/processed/.gitkeep
+**/*.csv
+**/*.json
+**/*.txt
+**/*.jpg
+**/*.jpeg
+**/*.png
 
 # Vector stores (large binary files)
 *.faiss
