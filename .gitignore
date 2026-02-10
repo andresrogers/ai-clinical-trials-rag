@@ -16,12 +16,18 @@ ENV/
 *.ipynb_checkpoints
 
 # API Keys & Secrets
+.copilot-ignore
 .github/
 .env
 .env.local
 credentials/
 *.pem
 *.key
+
+# Modern developing files
+opencode.json
+.opencode/
+AGENTS.md
 
 # Data files (large files not in git)
 data/raw/*

@@ -47,6 +47,7 @@ dependencies = [
     
 	# PDF processing
 	"PyPDF2>=3.0.1",
+	"pypdf>=3.0.0",
 	"pdfplumber>=0.10.3",
 	"PyMuPDF>=1.23.0",
 	"pydrive2>=1.17.0",
@@ -55,6 +56,9 @@ dependencies = [
 	"pandas>=2.1.0",
 	"polars>=0.20.0",
 	"numpy>=1.24.0",
+
+    # Visualization
+    "seaborn",
     
 	# Evaluation frameworks
 	"ragas>=0.1.0",
