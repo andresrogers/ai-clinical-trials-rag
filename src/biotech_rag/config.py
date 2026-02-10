@@ -4,11 +4,12 @@ This module defines project paths and application settings loaded from
 environment variables via `pydantic-settings`.
 """
 
+import os
 from pathlib import Path
 from typing import Final
-import os
-from pydantic_settings import BaseSettings
+
 from dotenv import load_dotenv
+from pydantic_settings import BaseSettings
 
 load_dotenv()
 
@@ -31,57 +32,73 @@ CACHE_DIR: Final[Path] = DATA_DIR / "cache"
 
 # Create directories if they don't exist
 for dir_path in [
-	TRIAL_PDFS_DIR, CHUNKS_DIR, METADATA_DIR, EMBEDDINGS_DIR,
-	VECTORSTORE_DIR, PROMPTS_DIR, REPORTS_DIR, FIGURES_DIR, CACHE_DIR
+    TRIAL_PDFS_DIR,
+    CHUNKS_DIR,
+    METADATA_DIR,
+    EMBEDDINGS_DIR,
+    VECTORSTORE_DIR,
+    PROMPTS_DIR,
+    REPORTS_DIR,
+    FIGURES_DIR,
+    CACHE_DIR,
 ]:
-	dir_path.mkdir(parents=True, exist_ok=True)
+    dir_path.mkdir(parents=True, exist_ok=True)
 
 
 # API Configuration
 class Settings(BaseSettings):
-	"""Application settings loaded from environment variables."""
-	# OpenAI
-	openai_api_key: str = os.getenv("OPENAI_API_KEY", "")
-	openai_org_id: str | None = os.getenv("OPENAI_ORG_ID")
+    """Application settings loaded from environment variables."""
 
-	# Vector Database
-	chroma_persist_dir: Path = VECTORSTORE_DIR / "chroma"
-	pinecone_api_key: str | None = os.getenv("PINECONE_API_KEY")
-	pinecone_environment: str = os.getenv("PINECONE_ENVIRONMENT", "us-west1-gcp")
-	pinecone_index_name: str = os.getenv("PINECONE_INDEX_NAME", "ai-clinical-trials-rag")
+    # OpenAI
+    openai_api_key: str = os.getenv("OPENAI_API_KEY", "")
+    openai_org_id: str | None = os.getenv("OPENAI_ORG_ID")
 
-	# Google Drive
-	google_drive_folder_id: str | None = os.getenv("GOOGLE_DRIVE_FOLDER_ID")
-	google_drive_credentials_path: Path | None = None
+    # Vector Database
+    chroma_persist_dir: Path = VECTORSTORE_DIR / "chroma"
+    pinecone_api_key: str | None = os.getenv("PINECONE_API_KEY")
+    pinecone_environment: str = os.getenv("PINECONE_ENVIRONMENT", "us-west1-gcp")
+    pinecone_index_name: str = os.getenv("PINECONE_INDEX_NAME", "ai-clinical-trials-rag")
 
-	# Model Configuration
-	embedding_model: str = "text-embedding-3-small"
-	embedding_dim: int = 1536
-	llm_model: str = "gpt-4o-mini"
-	max_tokens: int = 4000
-	temperature: float = 0.0
+    # Google Drive
+    google_drive_folder_id: str | None = os.getenv("GOOGLE_DRIVE_FOLDER_ID")
+    google_drive_credentials_path: Path | None = None
 
-	# Retrieval Configuration
-	chunk_size: int = 512
-	chunk_overlap: int = 128
-	top_k_retrieval: int = 20
-	top_k_rerank: int = 5
-	similarity_threshold: float = 0.7
+    # Model Configuration
+    # Embeddings (centralized defaults)
+    embedding_model: str = "qwen/qwen3-embedding-8b:floor"
+    embedding_dim: int = 4096
+    embedder_backend: str = os.getenv("EMBEDDER_BACKEND", "openrouter")
+    embedder_model: str = os.getenv("EMBEDDER_MODEL", "qwen/qwen3-embedding-8b:floor")
+    # LLM (centralized defaults)
+    llm_model: str = os.getenv("LLM_MODEL", "deepseek/deepseek-r1-distill-llama-70b:floor")
+    llm_max_tokens: int = int(os.getenv("LLM_MAX_TOKENS", "4000"))
+    llm_temperature: float = float(os.getenv("LLM_TEMPERATURE", "0.0"))
+    # Backwards-compat aliases
+    max_tokens: int = llm_max_tokens
+    temperature: float = llm_temperature
 
-	# Logging
-	log_level: str = os.getenv("LOG_LEVEL", "INFO")
+    # Retrieval Configuration (aligned for scientific chunking)
+    chunk_size: int = int(os.getenv("CHUNK_SIZE", "750"))
+    chunk_overlap: int = int(os.getenv("CHUNK_OVERLAP", "150"))
+    top_k_retrieval: int = int(os.getenv("TOP_K_RETRIEVAL", "20"))
+    top_k_rerank: int = int(os.getenv("TOP_K_RERANK", "5"))
+    similarity_threshold: float = float(os.getenv("SIMILARITY_THRESHOLD", "0.7"))
 
-	# Caching
-	cache_dir: Path = CACHE_DIR
-	enable_cache: bool = True
+    # Logging
+    log_level: str = os.getenv("LOG_LEVEL", "INFO")
 
-	# MLflow (optional)
-	mlflow_tracking_uri: str | None = os.getenv("MLFLOW_TRACKING_URI")
-	mlflow_experiment_name: str = os.getenv("MLFLOW_EXPERIMENT_NAME", "ai-clinical-trials-rag")
+    # Caching
+    cache_dir: Path = CACHE_DIR
+    enable_cache: bool = True
 
-	class Config:
-		env_file = ".env"
-		env_file_encoding = "utf-8"
+    # Cost Optimization & Limits
+    max_claims_per_answer: int = int(os.getenv("MAX_CLAIMS_PER_ANSWER", "5"))
+    max_ncts_per_run: int = int(os.getenv("MAX_NCTS_PER_RUN", "20"))
+    llm_batch_size: int = int(os.getenv("LLM_BATCH_SIZE", "5"))
+
+    class Config:
+        env_file = ".env"
+        env_file_encoding = "utf-8"
 
 
 settings = Settings()
