@@ -41,7 +41,6 @@ data/processed/vectorstore/*
 **/*.txt
 **/*.jpg
 **/*.jpeg
-**/*.png
 
 # Vector stores (large binary files)
 *.faiss
@@ -57,7 +56,6 @@ models/*.pt
 data/cache/*
 
 # Reports (keep structure, not artifacts)
-reports/figures/*
 reports/metrics/*
 !reports/figures/.gitkeep
 !reports/metrics/.gitkeep
