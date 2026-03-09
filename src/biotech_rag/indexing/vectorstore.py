@@ -131,3 +131,46 @@ def validate_vectorstore_for_nct(persist_dir: Path, collection_name: str, nct_id
     except Exception as e:
         print(f"Warning: Vectorstore validation failed for NCT {nct_id}: {e}")
         return False
+
+
+def get_chroma_class():
+    """Get the Chroma class with telemetry disabled.
+
+    This function dynamically imports the Chroma class, preferring the dedicated
+    langchain-chroma package to avoid LangChain deprecation warnings. It also
+    sets environment variables to disable Chroma telemetry and suppresses
+    chromadb INFO logs.
+
+    Returns:
+        Chroma class from langchain_chroma or langchain_community.vectorstores
+
+    Raises:
+        ImportError: If no Chroma wrapper is available
+    """
+    import os
+    import importlib
+    import logging
+
+    # Disable Chroma telemetry
+    os.environ.setdefault("CHROMA_DISABLE_TELEMETRY", "1")
+    os.environ.setdefault("CHROMADB_DISABLE_TELEMETRY", "1")
+    os.environ.setdefault("CHROMA_TELEMETRY", "0")
+
+    # Suppress chromadb INFO logs
+    for name in ("chromadb", "chromadb.telemetry", "chromadb.telemetry.product", "chromadb.telemetry.product.posthog"):
+        logging.getLogger(name).setLevel(logging.WARNING)
+
+    # Prefer langchain_chroma, fall back to langchain_community.vectorstores
+    ChromaClass = None
+    for module_name in ("langchain_chroma", "langchain_community.vectorstores"):
+        try:
+            mod = importlib.import_module(module_name)
+            ChromaClass = getattr(mod, "Chroma")
+            break
+        except Exception:
+            continue
+
+    if ChromaClass is None:
+        raise ImportError("No Chroma wrapper available; install langchain_chroma or langchain_community.vectorstores")
+
+    return ChromaClass

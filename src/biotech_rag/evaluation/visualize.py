@@ -18,9 +18,112 @@ from __future__ import annotations
 import json
 from collections.abc import Iterable
 from pathlib import Path
-from typing import Any
-
+from typing import Any, List, Optional, Tuple
+import numpy as np
 import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from loguru import logger
+
+def _format_label(name: str) -> str:
+    return name.replace("_", " ").replace("(mode=f1)", "(F1)")
+
+
+def plot_rag_metrics(
+    df: pd.DataFrame,
+    metrics: Optional[List[str]] = None,
+    figsize: Tuple[int, int] = (14, 6),
+    cmap: str = "Blues",
+    save_path: Optional[str] = None,
+    show: bool = True,
+) -> plt.Figure:
+    """Plot professional RAG metrics: radar (means) + per-sample distributions.
+
+    Args:
+        df: DataFrame containing metric columns (values in [0,1]).
+        metrics: Optional list controlling metric order. If None, a sensible
+            default order is used.
+        figsize: Figure size.
+        cmap: Seaborn palette name for the distribution plot.
+        save_path: Optional path to save the rendered figure (PNG).
+        show: Whether to call ``plt.show()`` before returning the Figure.
+
+    Returns:
+        The Matplotlib Figure object (also shown when ``show=True``).
+    """
+    default_metrics = [
+        "context_recall",
+        "answer_relevancy",
+        "faithfulness",
+        "factual_correctness(mode=f1)",
+        "semantic_similarity",
+        "context_precision",
+    ]
+    metrics = metrics or default_metrics
+
+    present = [m for m in metrics if m in df.columns]
+    missing = [m for m in metrics if m not in present]
+    if missing:
+        logger.warning("Missing metric columns: %s", missing)
+    if not present:
+        raise ValueError("No metric columns found in DataFrame.")
+
+    # Numeric conversion and clipping to [0,1]
+    df_num = df[present].apply(pd.to_numeric, errors="coerce").clip(0.0, 1.0)
+    mean_vals = df_num.mean().reindex(present).fillna(0.0).values
+
+    # Radar plot data
+    N = len(present)
+    angles = np.linspace(0, 2 * np.pi, N, endpoint=False)
+    angles_loop = np.concatenate([angles, [angles[0]]])
+    mean_loop = np.concatenate([mean_vals, [mean_vals[0]]])
+
+    sns.set_style("whitegrid")
+    fig = plt.figure(figsize=figsize, constrained_layout=True)
+
+    # Left: radar (mean)
+    ax1 = fig.add_subplot(1, 2, 1, polar=True)
+    ax1.set_theta_offset(np.pi / 2)
+    ax1.set_theta_direction(-1)
+    ax1.plot(angles_loop, mean_loop, color="#2E86AB", linewidth=2)
+    ax1.fill(angles_loop, mean_loop, color="#2E86AB", alpha=0.25)
+    labels = [_format_label(m) for m in present]
+    ax1.set_thetagrids(np.degrees(angles), labels)
+    ax1.set_ylim(0, 1)
+    ax1.set_title("Mean RAG Metrics (0–1)", y=1.08, fontsize=12)
+
+    # Right: per-sample distribution (box + jitter)
+    ax2 = fig.add_subplot(1, 2, 2)
+    df_long = df_num.melt(var_name="metric", value_name="value")
+    order = present
+    palette = sns.color_palette(cmap, n_colors=len(order))
+
+    sns.barplot(x="value", y="metric", data=df_long, order=order, ax=ax2, palette=palette, hue="metric", errorbar=None)
+    ax2.set_xlim(-0.02, 1.08)
+    ax2.set_xlabel("Score")
+    ax2.set_ylabel("")
+    ax2.set_title("Per-sample Metric Distribution", fontsize=12)
+
+    # Add mean markers + numeric labels on the distribution plot
+    yticks = ax2.get_yticks()
+    # If seaborn created non-integer yticks, fall back to sequential positions
+    if len(yticks) < len(mean_vals):
+        yticks = np.arange(len(mean_vals))
+
+    fig.suptitle("RAG Evaluation Metrics", fontsize=14)
+
+    if save_path:
+        try:
+            fig.savefig(save_path, dpi=300, bbox_inches="tight")
+            logger.info("Saved RAG metrics plot to %s", save_path)
+        except Exception:
+            logger.exception("Failed to save plot to %s", save_path)
+
+    if show:
+        plt.show()
+
+    return None
+
 
 
 def _coerce_summary(

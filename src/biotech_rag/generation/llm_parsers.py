@@ -127,3 +127,49 @@ def parse_llm_output(raw_text: Any) -> dict[str, object]:
             "missing_info": missing_info,
         }
     )
+
+
+def parse_structured_json(response: Any) -> dict[str, Any]:
+    """Parse structured JSON from LLM response.
+
+    Args:
+        response: LangChain AIMessage or string containing JSON.
+
+    Returns:
+        Parsed dict.
+
+    Raises:
+        ValueError: If JSON parsing fails.
+    """
+    # Handle LangChain AIMessage objects
+    if hasattr(response, 'content'):
+        text = str(response.content)
+    else:
+        text = str(response)
+
+    if not text or text.strip() == "":
+        raise ValueError("Empty response")
+
+    # Strip markdown code fences if present
+    text = re.sub(r'^```(?:json)?\s*', '', text.strip(), flags=re.MULTILINE)
+    text = re.sub(r'\s*```$', '', text.strip(), flags=re.MULTILINE)
+
+    # Try direct JSON parse
+    try:
+        parsed = json.loads(text)
+        if isinstance(parsed, dict):
+            return parsed
+    except json.JSONDecodeError:
+        pass
+
+    # Try to extract JSON object from text using regex
+    json_match = re.search(r'\{.*\}', text, flags=re.DOTALL)
+    if json_match:
+        try:
+            parsed = json.loads(json_match.group(0))
+            if isinstance(parsed, dict):
+                return parsed
+        except json.JSONDecodeError:
+            pass
+
+    raise ValueError(f"Could not parse JSON from response: {text[:200]}...")

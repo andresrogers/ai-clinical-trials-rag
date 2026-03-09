@@ -163,16 +163,10 @@ def retrieve_with_rerank(
     import json
     import re
 
-    # Try using a CrossEncoder (fast local reranker) when available
-    try:
-        from sentence_transformers import CrossEncoder  # type: ignore
-
-        has_crossencoder = True
-    except Exception as e:
-        logger.info(
-            f"CrossEncoder unavailable ({e}); will fall back to LLM-based reranker or return candidates as-is."
-        )
-        has_crossencoder = False
+    # CrossEncoder availability is probed lazily — we do NOT import sentence_transformers
+    # here because the mere import triggers HuggingFace Hub/Xet Storage network traffic.
+    # The actual import is deferred to where it is first used (see below).
+    has_crossencoder: bool | None = None  # None = not yet probed
 
     # Get initial candidates
     # Support both `invoke(query)` and `get_relevant_documents(query)`
@@ -230,8 +224,21 @@ def retrieve_with_rerank(
     if not docs:
         return []
 
-    # If CrossEncoder available, use it (preferred — fast when torch is present)
+    # If CrossEncoder available, use it (preferred — fast when torch is present).
+    # Probe lazily here so we never import sentence_transformers at the top of the function
+    # (the bare import triggers HuggingFace Hub / Xet Storage network traffic).
+    if has_crossencoder is None:
+        try:
+            from sentence_transformers import CrossEncoder as _CE  # type: ignore  # noqa: PLC0415
+            has_crossencoder = True
+        except Exception as _ce_err:
+            logger.info(
+                f"CrossEncoder unavailable ({_ce_err}); falling back to LLM-based reranker."
+            )
+            has_crossencoder = False
+
     if has_crossencoder:
+        from sentence_transformers import CrossEncoder  # type: ignore  # noqa: PLC0415
         model = CrossEncoder(reranker_model)
         pairs = [[query, d.page_content] for d in docs]
         scores = model.predict(pairs)

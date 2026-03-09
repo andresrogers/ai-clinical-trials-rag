@@ -12,6 +12,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+import pandas as pd
+
 from biotech_rag.evaluation.claim_verification import verify_claim_hybrid
 from biotech_rag.generation.llm_clients import get_openrouter_llm
 from biotech_rag.generation.llm_parsers import parse_llm_output
@@ -24,15 +26,14 @@ try:
 except ImportError:
     settings = None
 
+logger = logging.getLogger(__name__)
+
 try:
     from fuzzywuzzy import process
-
     FUZZY_AVAILABLE = True
 except ImportError:
     FUZZY_AVAILABLE = False
     logger.warning("fuzzywuzzy not available; drug normalization will use title case fallback.")
-
-logger = logging.getLogger(__name__)
 
 # Cache for FDA drug names
 _FDA_DRUG_NAMES = None
@@ -101,45 +102,63 @@ def canonicalize_drug_name(extracted_name: str) -> str:
         return extracted_name.title()
 
 
-# Extraction schema
-EXTRACTION_SCHEMA = {
-    "primary_outcomes": "list of dicts: [{'name': str, 'measure': str, 'timepoint': str, 'p_value': str or float}]",
-    "secondary_outcomes": "same as primary_outcomes",
-    "trial_status": "str: COMPLETED, TERMINATED, ACTIVE_NOT_RECRUITING, etc.",
-    "success_flag": "str: LIKELY_PASS, LIKELY_FAIL, DEFINITE_FAIL, NO_RESULTS",
-    "predicted_success_prob": "float: 0-1, confidence in success",
-    "enrollment": "int: number of participants",
-    "start_date": "str: ISO date YYYY-MM-DD",
-    "completion_date": "str: ISO date YYYY-MM-DD",
-    "adverse_events_summary": "str: short summary of key adverse events",
-    "drug_name_normalized": "str: canonical drug name from FDA labels",
-    "extraction_confidence": "float: 0-1, overall confidence",
-    "provenance_chunk_ids": "list of str: chunk IDs supporting the extraction",
+# Column-specific extraction prompts
+# Each prompt targets one field with a focused question
+COLUMN_PROMPTS = {
+    "primary_outcome": (
+        "In clinical trial with code {nct_id} and titled {official_title}: "
+        "What is the primary outcome measure? Return only the outcome name/description as plain text."
+    ),
+    "primary_outcome_p_value": (
+        "In clinical trial with code {nct_id} and titled {official_title}: "
+        "What is the p-value for the primary outcome? Return only the numeric value (e.g., 0.042) or 'N/A' if not reported."
+    ),
+    "enrolled_seriously_affected": (
+        "In clinical trial with code {nct_id} and titled {official_title}: "
+        "How many patients experienced serious adverse events? Return only the integer count or 'N/A' if not reported."
+    ),
+    "enrolled_deaths": (
+        "In clinical trial with code {nct_id} and titled {official_title}: "
+        "How many deaths occurred during the trial? Return only the integer count or 'N/A' if not reported."
+    ),
+    "secondary_outcome": (
+        "In clinical trial with code {nct_id} and titled {official_title}: "
+        "What is the most important secondary outcome measure? Return only one outcome name/description as plain text."
+    ),
+    "secondary_outcome_p_value": (
+        "In clinical trial with code {nct_id} and titled {official_title}: "
+        "What is the p-value for the secondary outcome? Return only the numeric value or 'N/A' if not reported."
+    ),
+    "success_flag_extracted": (
+        "In clinical trial with code {nct_id} and titled {official_title}: "
+        "Based on the trial results, was this trial successful? Return one of: LIKELY_PASS, LIKELY_FAIL, DEFINITE_FAIL, NO_RESULTS."
+    ),
+    "intervention_name_extracted": (
+        "In clinical trial with code {nct_id} and titled {official_title}: "
+        "What is the primary intervention/drug name being tested? Return only the drug/intervention name."
+    ),
 }
 
-STRUCTURED_EXTRACTION_PROMPT = """
-Extract structured information from the provided clinical trial chunks about the trial with NCT ID: {nct_id}.
+# Field-specific retrieval queries (more targeted than extraction prompts)
+# These are used to retrieve relevant chunks for each field
+FIELD_RETRIEVAL_QUERIES = {
+    "primary_outcome": "primary outcome endpoint measure",
+    "primary_outcome_p_value": "primary outcome p-value statistical significance results",
+    "enrolled_seriously_affected": "serious adverse events SAE grade 3 4 5",
+    "enrolled_deaths": "deaths mortality adverse events fatal",
+    "secondary_outcome": "secondary outcome endpoint measure",
+    "secondary_outcome_p_value": "secondary outcome p-value statistical results",
+    "success_flag_extracted": "trial results success efficacy met endpoint primary outcome",
+    "intervention_name_extracted": "intervention treatment drug compound agent",
+}
 
-Return ONLY valid JSON matching this schema:
-{{
-    "primary_outcomes": [{{ "name": "string", "measure": "string", "timepoint": "string", "p_value": "string or number" }}],
-    "secondary_outcomes": [same structure],
-    "trial_status": "string (e.g., COMPLETED, TERMINATED)",
-    "success_flag": "string (LIKELY_PASS, LIKELY_FAIL, DEFINITE_FAIL, NO_RESULTS)",
-    "predicted_success_prob": 0.0 to 1.0,
-    "enrollment": integer,
-    "start_date": "YYYY-MM-DD",
-    "completion_date": "YYYY-MM-DD",
-    "adverse_events_summary": "string summary",
-    "drug_name_normalized": "string",
-    "extraction_confidence": 0.0 to 1.0
-}}
+# Context template for prompts
+CONTEXT_TEMPLATE = """
 
-If a field is not available, use null or empty list/string. Be precise and cite evidence.
-
-Retrieved Chunks:
+Relevant excerpts from trial documents:
 {chunks_text}
-"""
+
+Answer concisely based only on the provided context."""
 
 
 def format_chunks_for_prompt(chunks: list[str], chunk_ids: list[str]) -> str:
@@ -147,36 +166,137 @@ def format_chunks_for_prompt(chunks: list[str], chunk_ids: list[str]) -> str:
     return "\n\n".join(f"Chunk {cid}: {text}" for cid, text in zip(chunk_ids, chunks))
 
 
-def extract_structured_fields(
-    nct_id: str, chunks: list[str], chunk_ids: list[str], llm=None
-) -> dict[str, Any]:
+def extract_single_field(
+    field_name: str,
+    nct_id: str,
+    official_title: str,
+    llm: Any,
+    hybrid_retriever: Any | None,
+    embedder: Embedder,
+    vstore_dir: Path,
+    top_k: int = 20,
+) -> str | float | int | None:
     """
-    Extract structured fields using LLM.
+    Extract a single field value using targeted retrieval and a focused prompt.
 
     Args:
-        nct_id: The trial NCT ID.
-        chunks: List of chunk texts.
-        chunk_ids: Corresponding chunk IDs.
+        field_name: Column name to extract (must be in COLUMN_PROMPTS).
+        nct_id: Trial NCT ID.
+        official_title: Trial title.
         llm: LLM client.
+        hybrid_retriever: Optional Vector+BM25 ensemble retriever.
+        embedder: Embedder instance for vector-only fallback.
+        vstore_dir: Vectorstore path.
+        top_k: Number of chunks to retrieve per field.
 
     Returns:
-        Dict with extracted fields + provenance.
+        Extracted value (cleaned and coerced) or None on failure.
     """
-    if llm is None:
-        llm = get_openrouter_llm()
+    if field_name not in COLUMN_PROMPTS:
+        logger.warning(f"No prompt defined for field: {field_name}")
+        return None
 
+    # --- Field-specific retrieval ---
+    retrieval_query_keywords = FIELD_RETRIEVAL_QUERIES.get(field_name, "")
+    retrieval_query = f"Trial {nct_id}: {retrieval_query_keywords}"
+    
+    logger.debug(f"Retrieving chunks for {field_name} with query: {retrieval_query}")
+
+    if hybrid_retriever is not None:
+        try:
+            if hasattr(hybrid_retriever, "invoke"):
+                docs = hybrid_retriever.invoke(retrieval_query)
+            else:
+                docs = hybrid_retriever.get_relevant_documents(retrieval_query)
+        except Exception as e:
+            logger.warning(f"Hybrid retriever failed for {field_name}/{nct_id}: {e} — using vector only")
+            docs = []
+
+        # Post-filter: prefer chunks for this NCT
+        nct_docs = [d for d in docs if d.metadata.get("nct_id") == nct_id]
+        if not nct_docs:
+            nct_docs = docs  # fallback to all docs
+
+        chunks = [d.page_content for d in nct_docs[:top_k]]
+        chunk_ids = [str(d.metadata.get("chunk_id") or d.metadata.get("id") or i)
+                     for i, d in enumerate(nct_docs[:top_k])]
+    else:
+        # Vector-only fallback
+        client, collection = init_chroma(vstore_dir, collection_name="clinical_trials")
+        results = retrieve_chunks(
+            collection=collection, embedder=embedder, question=retrieval_query, nct_id=nct_id, top_k=top_k
+        )
+        chunks = results.get("documents", [[]])[0]
+        chunk_ids = results.get("ids", [[]])[0]
+
+    if not chunks:
+        logger.warning(f"No chunks retrieved for {field_name}/{nct_id}")
+        return None
+
+    # Format chunks for prompt
     chunks_text = format_chunks_for_prompt(chunks, chunk_ids)
-    prompt = STRUCTURED_EXTRACTION_PROMPT.format(nct_id=nct_id, chunks_text=chunks_text)
 
-    response = llm.invoke(prompt)
+    # Build extraction prompt
+    question = COLUMN_PROMPTS[field_name].format(
+        nct_id=nct_id, official_title=official_title
+    )
+    prompt = question + CONTEXT_TEMPLATE.format(chunks_text=chunks_text)
+
     try:
-        extracted = parse_llm_output(response, expected_type=dict)
-        if isinstance(extracted, dict):
-            extracted["provenance_chunk_ids"] = chunk_ids
-            return extracted
+        response = llm.invoke(prompt)
+        # Extract content from LangChain AIMessage
+        if hasattr(response, 'content'):
+            raw_value = str(response.content).strip()
+        else:
+            raw_value = str(response).strip()
+
+        # Clean response
+        raw_value = raw_value.strip('"\' \n\t')
+
+        # Handle N/A responses
+        if raw_value.upper() in ['N/A', 'NA', 'NOT AVAILABLE', 'NOT REPORTED', 'UNKNOWN', '']:
+            return None
+
+        # Type coercion based on field name
+        if 'p_value' in field_name:
+            # Extract numeric from string like "<0.05" or "p=0.042"
+            match = re.search(r'[\d.]+', raw_value)
+            if match:
+                try:
+                    value = float(match.group())
+                    # Validate p-value range
+                    if 0 <= value <= 1:
+                        return value
+                except ValueError:
+                    pass
+            return None
+
+        elif field_name in ['enrolled_seriously_affected', 'enrolled_deaths']:
+            # Extract integer
+            match = re.search(r'\d+', raw_value)
+            if match:
+                try:
+                    return int(match.group())
+                except ValueError:
+                    pass
+            return None
+
+        elif field_name == 'success_flag_extracted':
+            # Validate against allowed values
+            value_upper = raw_value.upper()
+            allowed = ['LIKELY_PASS', 'LIKELY_FAIL', 'DEFINITE_FAIL', 'NO_RESULTS']
+            for allowed_val in allowed:
+                if allowed_val in value_upper:
+                    return allowed_val
+            return None
+
+        else:
+            # String fields: return as-is
+            return raw_value if len(raw_value) > 0 else None
+
     except Exception as e:
-        logger.error(f"Extraction failed for {nct_id}: {e}")
-    return {"error": "extraction_failed", "provenance_chunk_ids": chunk_ids}
+        logger.error(f"Failed to extract {field_name} for {nct_id}: {e}")
+        return None
 
 
 def normalize_extracted_data(extracted: dict[str, Any]) -> dict[str, Any]:
@@ -278,113 +398,132 @@ def verify_extracted_fields(
 
 
 def enrich_trial_data(
-    nct_id: str, vstore_dir: Path, embedder: Embedder, top_k: int = 20
+    nct_id: str,
+    master_row: dict,
+    vstore_dir: Path,
+    embedder: Embedder,
+    top_k: int = 20,
+    hybrid_retriever: Any | None = None,
+    llm: Any | None = None,
 ) -> dict[str, Any]:
-    """
-    Full enrichment pipeline for one trial.
+    """Selective enrichment pipeline: extract only missing fields using per-field retrieval.
 
     Args:
         nct_id: Trial NCT ID.
+        master_row: Dict representing the CSV row for this NCT (with all columns).
         vstore_dir: Vectorstore path.
         embedder: Embedder instance.
-        top_k: Number of chunks to retrieve.
+        top_k: Number of chunks to retrieve per field.
+        hybrid_retriever: Optional Vector+BM25 ensemble retriever.
+        llm: LLM client for extraction (if None, uses default OpenRouter model).
 
     Returns:
-        Enriched dict for the trial.
+        Enriched dict with nct_id + 8 target fields (only extracted if missing).
     """
-    client, collection = init_chroma(vstore_dir, collection_name="clinical_trials")
+    if llm is None:
+        llm = get_openrouter_llm()
 
-    # Retrieve chunks for this NCT
-    question = f"Extract key information about clinical trial {nct_id}"
-    results = retrieve_chunks(
-        collection=collection, embedder=embedder, question=question, nct_id=nct_id, top_k=top_k
-    )
-    chunks = results.get("documents", [[]])[0]
-    chunk_ids = results.get("ids", [[]])[0]
+    # Extract official_title from master row
+    official_title = str(master_row.get('official_title', 'Unknown Trial')).strip()
+    if not official_title or official_title == 'nan':
+        official_title = 'Unknown Trial'
 
-    if not chunks:
-        return {"nct_id": nct_id, "error": "no_chunks_retrieved"}
+    # --- Per-field extraction (only for missing fields) ---
+    # Each field does its own targeted retrieval
+    enriched_data = {"nct_id": nct_id}
 
-    # Extract
-    extracted = extract_structured_fields(nct_id, chunks, chunk_ids)
+    for field_name in COLUMN_PROMPTS.keys():
+        # Check if field is missing in master row
+        existing_value = master_row.get(field_name)
+        
+        # Consider missing if: None, NaN, empty string, or 'nan' string
+        is_missing = (
+            existing_value is None
+            or (isinstance(existing_value, float) and pd.isna(existing_value))
+            or (isinstance(existing_value, str) and existing_value.strip().lower() in ['', 'nan', 'n/a'])
+        )
 
-    # Normalize
-    normalized = normalize_extracted_data(extracted)
+        if is_missing:
+            logger.info(f"Extracting {field_name} for {nct_id} (missing in master CSV)")
+            extracted_value = extract_single_field(
+                field_name=field_name,
+                nct_id=nct_id,
+                official_title=official_title,
+                llm=llm,
+                hybrid_retriever=hybrid_retriever,
+                embedder=embedder,
+                vstore_dir=vstore_dir,
+                top_k=top_k,
+            )
+            # Use 'N/A' for failed extractions (per user requirement)
+            enriched_data[field_name] = extracted_value if extracted_value is not None else 'N/A'
+        else:
+            # Keep existing value
+            logger.debug(f"Skipping {field_name} for {nct_id} (already has value: {existing_value})")
+            enriched_data[field_name] = existing_value
 
-    # Verify
-    verified = verify_extracted_fields(normalized, chunks)
-
-    verified["nct_id"] = nct_id
-    return verified
+    return enriched_data
 
 
 def save_enriched_csv(enriched_records: list[dict], output_path: Path):
     """
-    Save enriched records to CSV with key scalars and derived fields.
-    Nested data (e.g., outcomes) is kept in JSON; CSV has summaries.
+    Merge enriched records with master CSV, updating only missing fields.
 
     Args:
-        enriched_records: List of enriched dicts.
+        enriched_records: List of enriched dicts (nct_id + 8 target fields).
         output_path: Output CSV path.
     """
-    # Prepare CSV rows with only key fields
-    csv_rows = []
-    for rec in enriched_records:
-        row = {}
+    # Load original master CSV
+    master_csv_path = output_path.parent / 'master_ai_trials_dataset.csv'
+    if not master_csv_path.exists():
+        logger.warning(f"Master CSV not found at {master_csv_path}; saving enriched records only")
+        df_enriched = pd.DataFrame(enriched_records)
+        df_enriched.to_csv(output_path, index=False)
+        return
 
-        # Scalars
-        for key in [
-            "nct_id",
-            "trial_status",
-            "success_flag",
-            "predicted_success_prob",
-            "enrollment",
-            "start_date",
-            "completion_date",
-            "extraction_confidence",
-            "verification_score",
-            "drug_name_normalized",
-        ]:
-            row[key] = rec.get(key, None)
+    master_df = pd.read_csv(master_csv_path)
+    logger.info(f"Loaded master CSV with {len(master_df)} rows")
 
-        # Derived counts and means
-        primary_outcomes = rec.get("primary_outcomes", [])
-        secondary_outcomes = rec.get("secondary_outcomes", [])
+    # Convert enriched records to DataFrame
+    enriched_df = pd.DataFrame(enriched_records)
 
-        row["primary_outcome_count"] = (
-            len(primary_outcomes) if isinstance(primary_outcomes, list) else 0
-        )
-        row["secondary_outcome_count"] = (
-            len(secondary_outcomes) if isinstance(secondary_outcomes, list) else 0
-        )
+    # Add new columns to master if they don't exist
+    new_columns = ['secondary_outcome', 'secondary_outcome_p_value', 
+                   'success_flag_extracted', 'intervention_name_extracted']
+    for col in new_columns:
+        if col not in master_df.columns:
+            master_df[col] = None
 
-        # Mean p-values
-        def mean_p_value(outcomes):
-            if not isinstance(outcomes, list):
-                return None
-            p_values = []
-            for o in outcomes:
-                if isinstance(o, dict) and "p_value" in o:
-                    p = o["p_value"]
-                    if isinstance(p, (int, float)):
-                        p_values.append(p)
-                    elif isinstance(p, str):
-                        # Try to parse
-                        try:
-                            p_values.append(float(p))
-                        except ValueError:
-                            pass
-            return sum(p_values) / len(p_values) if p_values else None
+    # Merge on nct_id
+    merged_df = master_df.merge(
+        enriched_df,
+        on='nct_id',
+        how='left',
+        suffixes=('', '_enriched')
+    )
 
-        row["mean_primary_p_value"] = mean_p_value(primary_outcomes)
-        row["mean_secondary_p_value"] = mean_p_value(secondary_outcomes)
+    # Update columns: use enriched value if original is missing
+    target_columns = list(COLUMN_PROMPTS.keys())
+    for col in target_columns:
+        if col in merged_df.columns:
+            # Column exists in master: update where enriched value is not 'N/A' or error
+            enriched_col = f"{col}_enriched"
+            if enriched_col in merged_df.columns:
+                # Update: use enriched value when original is NaN and enriched is valid
+                mask = merged_df[col].isna() & merged_df[enriched_col].notna()
+                merged_df.loc[mask, col] = merged_df.loc[mask, enriched_col]
+                # Drop the duplicate _enriched column
+                merged_df.drop(columns=[enriched_col], inplace=True)
+        else:
+            # Column doesn't exist in master: just add it (already in new_columns)
+            pass
 
-        csv_rows.append(row)
+    # Drop error column if present
+    if 'error' in merged_df.columns:
+        merged_df.drop(columns=['error'], inplace=True)
+    if 'error_enriched' in merged_df.columns:
+        merged_df.drop(columns=['error_enriched'], inplace=True)
 
-    df = pd.DataFrame(csv_rows)
-    df.to_csv(output_path, index=False)
-    logger.info(f"Saved {len(csv_rows)} enriched records to {output_path}")
-
-
-# Import pandas here to avoid circular
-import pandas as pd
+    # Save merged DataFrame
+    merged_df.to_csv(output_path, index=False)
+    logger.info(f"Saved merged CSV with {len(merged_df)} rows and {len(merged_df.columns)} columns to {output_path}")

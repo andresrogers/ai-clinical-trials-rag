@@ -11,6 +11,11 @@ from typing import Final
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
 
+try:
+    from pydantic import ConfigDict
+except Exception:  # pragma: no cover - pydantic v1 compatibility fallback
+    ConfigDict = None
+
 load_dotenv()
 
 # Project paths
@@ -49,6 +54,12 @@ for dir_path in [
 class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
 
+    # Allow extra env vars to be present without failing validation (helps local dev)
+    if ConfigDict is not None:
+        model_config = ConfigDict(extra="ignore", env_file=".env", env_file_encoding="utf-8")
+    else:
+        model_config = {"extra": "ignore", "env_file": ".env", "env_file_encoding": "utf-8"}
+
     # OpenAI
     openai_api_key: str = os.getenv("OPENAI_API_KEY", "")
     openai_org_id: str | None = os.getenv("OPENAI_ORG_ID")
@@ -73,6 +84,8 @@ class Settings(BaseSettings):
     llm_model: str = os.getenv("LLM_MODEL", "deepseek/deepseek-r1-distill-llama-70b:floor")
     llm_max_tokens: int = int(os.getenv("LLM_MAX_TOKENS", "4000"))
     llm_temperature: float = float(os.getenv("LLM_TEMPERATURE", "0.0"))
+    # Prefer using OpenRouter-based remote verifiers for NLI/QA (avoid local HF downloads)
+    use_openrouter_verifier: bool = bool(os.getenv("USE_OPENROUTER_VERIFIER", "True") in ("True", "true", "1"))
     # Backwards-compat aliases
     max_tokens: int = llm_max_tokens
     temperature: float = llm_temperature
@@ -96,9 +109,7 @@ class Settings(BaseSettings):
     max_ncts_per_run: int = int(os.getenv("MAX_NCTS_PER_RUN", "20"))
     llm_batch_size: int = int(os.getenv("LLM_BATCH_SIZE", "5"))
 
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
+    # model_config set above configures env loading and extra handling
 
 
 settings = Settings()

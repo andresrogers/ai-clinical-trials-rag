@@ -87,13 +87,4 @@ Practical notes from the current run:
 - The demo uses OpenRouter/Qwen embedding by default (embedding dim 4096). For reproducibility, lock the same embedding model at ingestion and query time or reindex if you change the model.
 - The ingestion pipeline detects duplicate chunk IDs and deduplicates batches before upsert.
 - Some LLM draft runs in the example notebooks show minor parsing edge cases (e.g. `NoneType.strip()` in a few template rows). These are easy fixes by validating inputs before calling the LLM chains.
-
----
-
-## Contact & Next steps
-
-- This project is intended as a portfolio showcase. If you'd like, I can:
-  1. Add a small CLI script to run ingestion end‑to‑end and produce a reproducible demo dataset.
-  2. Harden the ground‑truth pipeline with additional input validation and retries for LLM calls.
-
-Find the core code under `src/biotech_rag/` and the notebooks under `notebooks/`.
+- Find the core code under `src/biotech_rag/` and the notebooks under `notebooks/`.
