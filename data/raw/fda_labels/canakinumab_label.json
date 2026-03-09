@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-01-24",
+    "results": {
+      "skip": 0,
+      "limit": 1,
+      "total": 6
+    }
+  },
+  "results": [
+    {
+      "spl_product_data_elements": [
+        "GUNA-HEMORRHOIDS activated charcoal - arnica montana - atropa belladonna - canakinumab - hydrocotyle asiatica extract - aesculus hippocastanum flower - melissa officinalis - paeonia officinalis root - podophyllum peltatum root - pork liver - strychnos nux-vomica seed - sus scrofa small intestine mucosa lymph follicle - sus scrofa vein - hamamelis virginiana root bark/stem bark - anti-interleukin-1.alpha. immunoglobulin g rabbit - ALCOHOL AESCULUS HIPPOCASTANUM FLOWER AESCULUS HIPPOCASTANUM FLOWER ANTI-INTERLEUKIN-1.ALPHA. IMMUNOGLOBULIN G RABBIT ANTI-INTERLEUKIN-1.ALPHA. IMMUNOGLOBULIN G RABBIT CANAKINUMAB CANAKINUMAB ARNICA MONTANA ARNICA MONTANA ATROPA BELLADONNA ATROPA BELLADONNA ACTIVATED CHARCOAL ACTIVATED CHARCOAL HAMAMELIS VIRGINIANA ROOT BARK/STEM BARK HAMAMELIS VIRGINIANA ROOT BARK/STEM BARK PORK LIVER PORK LIVER HYDROCOTYLE ASIATICA EXTRACT HYDROCOTYLE ASIATICA EXTRACT SUS SCROFA SMALL INTESTINE MUCOSA LYMPH FOLLICLE SUS SCROFA SMALL INTESTINE MUCOSA LYMPH FOLLICLE MELISSA OFFICINALIS MELISSA OFFICINALIS STRYCHNOS NUX-VOMICA SEED STRYCHNOS NUX-VOMICA SEED PAEONIA OFFICINALIS ROOT PAEONIA OFFICINALIS ROOT PODOPHYLLUM PELTATUM ROOT PODOPHYLLUM PELTATUM ROOT SUS SCROFA VEIN SUS SCROFA VEIN"
+      ],
+      "active_ingredient": [
+        "ACTIVE INGREDIENTS/PURPOSE AESCULUS HIPPOCASTANUM 6C VENOUS FLOW SUPPORT ANTI INTERLEUKIN 1 ALPHA 4C IMMUNE STRENGTHENING ANTI INTERLEUKIN 1 BETA 4C IMMUNE STRENGTHENING ARNICA MONTANA 6C HEMORRHOIDAL ITCHING BELLADONNA 6C ANTI-INFLAMMATORY CARBO VEGETALIS 10X BOWEL DETOXIFICATION HAMAMELIS VIRGINIANA 6C HEMORRHOIDAL PAIN HEPAR 6X, 12X, 30X SUPPORTS LIVER DETOXIFICATION HYDROCOTYLE ASIATICA 6C PAIN RELIEF LYMPHATIC VESSEL 6X PROMOTES LYMPH FLOW MELISSA OFFICINALIS 6C DIGESTIVE NUX VOMICA 6C DIGESTIVE PAEONIA OFFICINALIS 6X ANTIHEMORRHOIDAL PODOPHYLLUM PELTATUM 4C BOWEL ACTIVITY VEIN 4C VENOUS FLOW SUPPORT"
+      ],
+      "purpose": [
+        "USES Temporary relief of symptoms due to hemorrhoids such as: Pain Itching Burning"
+      ],
+      "warnings": [
+        "WARNINGS Stop use and ask doctor if symptoms persist more than 5 days. If pregnant or breast-feeding ask a health professional before use. Keep out of reach of children. In case of overdose, get medical help or contact a Poison Control Center right away. Contains ethyl alcohol 30%"
+      ],
+      "pregnancy_or_breast_feeding": [
+        "PREGNANCY If pregnant or breast-feeding ask a doctor before use."
+      ],
+      "keep_out_of_reach_of_children": [
+        "WARNINGS Keep out of reach of children."
+      ],
+      "dosage_and_administration": [
+        "DIRECTIONS Adults and children 12 years and older 20 drops in a little water, 2 times per day Children between 12 years and 6 years of age 10 drops in a little water, 2 times per day Children under 6 years 5 drops in a glass of water, 2 times per day"
+      ],
+      "questions": [
+        "QUESTIONS Questions?: info@gunainc.com, tel. (484) 223-3500"
+      ],
+      "indications_and_usage": [
+        "Take 15 minutes before meals."
+      ],
+      "inactive_ingredient": [
+        "Inactive ingredient: Ethyl alcohol 30%."
+      ],
+      "package_label_principal_display_panel": [
+        "PRINCIPAL DISPLAY PANEL 5USHEM-Rev03-02-05-18"
+      ],
+      "set_id": "0fd0dcef-79c6-4489-a533-996aa5331d9c",
+      "id": "7e8f9d55-ff6d-cbe7-e053-2a91aa0a382e",
+      "effective_time": "20181221",
+      "version": "2",
+      "openfda": {
+        "brand_name": [
+          "GUNA-HEMORRHOIDS"
+        ],
+        "generic_name": [
+          "ACTIVATED CHARCOAL - ARNICA MONTANA - ATROPA BELLADONNA - CANAKINUMAB - HYDROCOTYLE ASIATICA EXTRACT - AESCULUS HIPPOCASTANUM FLOWER - MELISSA OFFICINALIS - PAEONIA OFFICINALIS ROOT - PODOPHYLLUM PELTATUM ROOT - PORK LIVER - STRYCHNOS NUX-VOMICA SEED - SUS SCROFA SMALL INTESTINE MUCOSA LYMPH FOLLICLE - SUS SCROFA VEIN - HAMAMELIS VIRGINIANA ROOT BARK/STEM BARK - ANTI-INTERLEUKIN-1.ALPHA. IMMUNOGLOBULIN G RABBIT -"
+        ],
+        "manufacturer_name": [
+          "Guna spa"
+        ],
+        "product_ndc": [
+          "17089-296"
+        ],
+        "product_type": [
+          "HUMAN OTC DRUG"
+        ],
+        "route": [
+          "ORAL"
+        ],
+        "substance_name": [
+          "ACTIVATED CHARCOAL",
+          "AESCULUS HIPPOCASTANUM FLOWER",
+          "ANTI-INTERLEUKIN-1.ALPHA. IMMUNOGLOBULIN G RABBIT",
+          "ARNICA MONTANA",
+          "ATROPA BELLADONNA",
+          "CANAKINUMAB",
+          "HAMAMELIS VIRGINIANA ROOT BARK/STEM BARK",
+          "HYDROCOTYLE ASIATICA EXTRACT",
+          "MELISSA OFFICINALIS",
+          "PAEONIA OFFICINALIS ROOT",
+          "PODOPHYLLUM PELTATUM ROOT",
+          "PORK LIVER",
+          "STRYCHNOS NUX-VOMICA SEED",
+          "SUS SCROFA SMALL INTESTINE MUCOSA LYMPH FOLLICLE",
+          "SUS SCROFA VEIN"
+        ],
+        "spl_id": [
+          "7e8f9d55-ff6d-cbe7-e053-2a91aa0a382e"
+        ],
+        "spl_set_id": [
+          "0fd0dcef-79c6-4489-a533-996aa5331d9c"
+        ],
+        "package_ndc": [
+          "17089-296-18"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0317089296188"
+        ],
+        "nui": [
+          "N0000185375",
+          "N0000175629",
+          "N0000184306",
+          "N0000185001",
+          "M0000728",
+          "M0016962",
+          "M0516536"
+        ],
+        "pharm_class_epc": [
+          "Non-Standardized Plant Allergenic Extract [EPC]"
+        ],
+        "pharm_class_pe": [
+          "Increased Histamine Release [PE]",
+          "Cell-mediated Immunity [PE]",
+          "Increased IgG Production [PE]"
+        ],
+        "pharm_class_cs": [
+          "Allergens [CS]",
+          "Plant Proteins [CS]",
+          "Seed Storage Proteins [CS]"
+        ],
+        "unii": [
+          "2P3VWU3H10",
+          "KK0Z92II8M",
+          "ML4QRZ1HCL",
+          "O80TY208ZW",
+          "WQZ3G9PF0H",
+          "37CQ2C7X93",
+          "T7S323PKJS",
+          "7M867G6T1U",
+          "YF70189L0N",
+          "8R564U2E1P",
+          "2S713A4VP3",
+          "6EC706HI7F",
+          "269XH13919",
+          "308LM01C72",
+          "2510RH3I89"
+        ]
+      }
+    }
+  ]
+}

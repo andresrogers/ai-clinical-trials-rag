@@ -30,7 +30,6 @@ opencode.json
 AGENTS.md
 
 # Data files (large files not in git)
-data/raw/*
 data/interim/*
 data/processed/*
 !data/raw/.gitkeep
@@ -38,7 +37,6 @@ data/processed/*
 !data/interim/.gitkeep
 !data/processed/.gitkeep
 **/*.csv
-**/*.json
 **/*.txt
 **/*.jpg
 **/*.jpeg
@@ -84,6 +82,7 @@ htmlcov/
 .pytest_cache/
 .tox/
 .hypothesis/
+scripts/
 
 # Type checking
 .mypy_cache/

@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-01-24",
+    "results": {
+      "skip": 0,
+      "limit": 1,
+      "total": 400
+    }
+  },
+  "results": [
+    {
+      "spl_product_data_elements": [
+        "Childrens Zyrtec Cetirizine hydrochloride BETADEX STARCH, CORN LACTOSE MONOHYDRATE MAGNESIUM STEARATE MANNITOL SUCRALOSE CETIRIZINE HYDROCHLORIDE CETIRIZINE CTZ"
+      ],
+      "spl_unclassified_section": [
+        "Drug Facts"
+      ],
+      "active_ingredient": [
+        "Active ingredient (in each chewable tablet) Cetirizine HCl 2.5 mg"
+      ],
+      "purpose": [
+        "Purpose Antihistamine"
+      ],
+      "indications_and_usage": [
+        "Uses temporarily relieves these symptoms due to hay fever or other upper respiratory allergies: runny nose sneezing itchy, watery eyes itching of the nose or throat"
+      ],
+      "warnings": [
+        "Warnings Do not use if you have ever had an allergic reaction to this product or any of its ingredients or to an antihistamine containing hydroxyzine. Ask a doctor before use if you have liver or kidney disease. Your doctor should determine if you need a different dose. Ask a doctor or pharmacist before use if you are taking tranquilizers or sedatives. When using this product drowsiness may occur avoid alcoholic drinks alcohol, sedatives, and tranquilizers may increase drowsiness be careful when driving a motor vehicle or operating machinery Stop use and ask a doctor if an allergic reaction to this product occurs. Seek medical help right away. If pregnant or breast-feeding if breast-feeding: not recommended if pregnant: ask a health professional before use. Keep out of reach of children. In case of overdose, get medical help or contact a Poison Control Center right away. (1-800-222-1222)"
+      ],
+      "do_not_use": [
+        "Do not use if you have ever had an allergic reaction to this product or any of its ingredients or to an antihistamine containing hydroxyzine."
+      ],
+      "ask_doctor": [
+        "Ask a doctor before use if you have liver or kidney disease. Your doctor should determine if you need a different dose."
+      ],
+      "ask_doctor_or_pharmacist": [
+        "Ask a doctor or pharmacist before use if you are taking tranquilizers or sedatives."
+      ],
+      "when_using": [
+        "When using this product drowsiness may occur avoid alcoholic drinks alcohol, sedatives, and tranquilizers may increase drowsiness be careful when driving a motor vehicle or operating machinery"
+      ],
+      "stop_use": [
+        "Stop use and ask a doctor if an allergic reaction to this product occurs. Seek medical help right away."
+      ],
+      "pregnancy_or_breast_feeding": [
+        "If pregnant or breast-feeding if breast-feeding: not recommended if pregnant: ask a health professional before use."
+      ],
+      "keep_out_of_reach_of_children": [
+        "Keep out of reach of children. In case of overdose, get medical help or contact a Poison Control Center right away. (1-800-222-1222)"
+      ],
+      "dosage_and_administration": [
+        "Directions may be taken with or without water chew or crush tablets completely before swallowing children 2 to under 6 years of age Chew and swallow 1 tablet (2.5 mg) once daily; If needed, dose can be increased to a maximum of 2 tablets (5 mg) once daily or 1 tablet (2.5 mg) every 12 hours. Do not give more than 2 tablets (5 mg) in 24 hours. adults and children 6 years and over Chew and swallow 2 tablets (5 mg) or 4 tablets (10 mg) once daily depending upon severity of symptoms; do not take more than 4 tablets (10 mg) in 24 hours. adults 65 years and over Chew and swallow 2 tablets (5 mg) once daily; do not take more than 2 tablets (5 mg) in 24 hours. children under 2 years of age ask a doctor consumers with liver or kidney disease ask a doctor"
+      ],
+      "dosage_and_administration_table": [
+        "<table width=\"50%\" styleCode=\"Noautorules\"><colgroup><col align=\"left\" valign=\"top\" width=\"50%\"/><col align=\"left\" valign=\"top\" width=\"50%\"/></colgroup><tbody><tr styleCode=\"Botrule\"><td styleCode=\"Toprule Rrule\">children 2 to under 6 years of age</td><td styleCode=\"Toprule\">Chew and swallow 1 tablet (2.5 mg) once daily; If needed, dose can be increased to a maximum of 2 tablets (5 mg) once daily or 1 tablet (2.5 mg) every 12 hours. Do not give more than 2 tablets (5 mg) in 24 hours.</td></tr><tr styleCode=\"Botrule\"><td styleCode=\"Rrule\">adults and children 6 years and over</td><td>Chew and swallow 2 tablets (5 mg) or 4 tablets (10 mg) once daily depending upon severity of symptoms; do not take more than 4 tablets (10 mg) in 24 hours.</td></tr><tr styleCode=\"Botrule\"><td styleCode=\"Rrule\">adults 65 years and over</td><td>Chew and swallow 2 tablets (5 mg) once daily; do not take more than 2 tablets (5 mg) in 24 hours.</td></tr><tr styleCode=\"Botrule\"><td styleCode=\"Rrule\">children under 2 years of age</td><td>ask a doctor</td></tr><tr><td styleCode=\"Rrule\">consumers with liver or kidney disease</td><td>ask a doctor</td></tr></tbody></table>"
+      ],
+      "storage_and_handling": [
+        "Other information store between 20\u00b0 to 25\u00b0C (68\u00b0 to 77\u00b0F) do not use if blister unit is torn or broken"
+      ],
+      "inactive_ingredient": [
+        "Inactive ingredients betadex, corn starch, flavor, lactose monohydrate, magnesium stearate, mannitol, silicified microcrystalline cellulose, sucralose"
+      ],
+      "questions": [
+        "Questions? call 1-800-343-7805 (toll-free) or 215-273-8755 (collect)"
+      ],
+      "package_label_principal_display_panel": [
+        "PRINCIPAL DISPLAY PANEL New look Same relief NDC 50580-790-01 Children's ZYRTEC \u00ae Cetirizine HCl chewable tablets 2.5 mg /antihistamine ALLERGY Indoor + Outdoor Allergies 2 yrs & older Dye-Free Chewables 24 Hour Relief of Sneezing Runny Nose Itchy, Watery Eyes Itchy Throat or Nose Actual Size Grape Flavor Chew or crush tablets completely before swallowing 12 CHEWABLE TABLETS Zyrtec-1"
+      ],
+      "set_id": "013ce40e-37c9-4b84-b530-ed895f60ce0e",
+      "id": "322eb217-089d-e92d-e063-6394a90a6566",
+      "effective_time": "20250407",
+      "version": "8",
+      "openfda": {
+        "application_number": [
+          "NDA021621"
+        ],
+        "brand_name": [
+          "Childrens Zyrtec"
+        ],
+        "generic_name": [
+          "CETIRIZINE HYDROCHLORIDE"
+        ],
+        "manufacturer_name": [
+          "Kenvue Brands LLC"
+        ],
+        "product_ndc": [
+          "50580-790"
+        ],
+        "product_type": [
+          "HUMAN OTC DRUG"
+        ],
+        "route": [
+          "ORAL"
+        ],
+        "substance_name": [
+          "CETIRIZINE HYDROCHLORIDE"
+        ],
+        "rxcui": [
+          "2558501",
+          "2558503"
+        ],
+        "spl_id": [
+          "322eb217-089d-e92d-e063-6394a90a6566"
+        ],
+        "spl_set_id": [
+          "013ce40e-37c9-4b84-b530-ed895f60ce0e"
+        ],
+        "package_ndc": [
+          "50580-790-01",
+          "50580-790-02",
+          "50580-790-03"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300450239129"
+        ],
+        "unii": [
+          "64O047KTOA"
+        ]
+      }
+    }
+  ]
+}

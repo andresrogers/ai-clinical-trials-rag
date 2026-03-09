@@ -1,0 +1,313 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-01-24",
+    "results": {
+      "skip": 0,
+      "limit": 1,
+      "total": 2
+    }
+  },
+  "results": [
+    {
+      "spl_product_data_elements": [
+        "Joette Calabrese Survivalist Kit Abrot Acon Agn Ail Ambr Ambro Am-C Ant-C Apis Arn Ars Aur-A Aur Bapt Bar-C Bell BB Both Bov Brom Cadm-S Calad Calc Camph Carb-Ac Card-M Cean Chel Chinin-A Cina Chin Cic Cob Colch Con Crot-H Crot-T Cupr Dulc Elaps Eup-Per Fl-Ac Galph Graph Gunp Ham Hekla Hell Hep Hydr-Ac Hyos Hyper Kali-Br Kali-C Kali-I Lath Laur Led Lob Merc-Cy Merc Mez Mosch Mur-Ac Naja Nat-C Nit-Ac Nux-M Pyrog Ph-Ac Pic-Ac Plb Rhus-T Ruta Samb Sang Sarr Sep Stram Sul-Ac Tab Terent Ter Teucr Verat Verat-V Vip SUCROSE ARTEMISIA ABROTANUM FLOWERING TOP ARTEMISIA ABROTANUM FLOWERING TOP ACONITUM NAPELLUS ACONITUM NAPELLUS AETHUSA CYNAPIUM AETHUSA CYNAPIUM CHASTE TREE CHASTE TREE AILANTHUS ALTISSIMA FLOWERING TWIG AILANTHUS ALTISSIMA FLOWERING TWIG AMBERGRIS AMBERGRIS AMBROSIA ARTEMISIIFOLIA POLLEN AMBROSIA ARTEMISIIFOLIA POLLEN AMMONIUM CARBONATE AMMONIUM CATION ANTIMONY TRISULFIDE ANTIMONY TRISULFIDE APIS MELLIFERA APIS MELLIFERA ARNICA MONTANA ARNICA MONTANA ARSENIC TRIOXIDE ARSENIC CATION (3+) GOLD GOLD BAPTISIA TINCTORIA ROOT BAPTISIA TINCTORIA ROOT BARIUM CARBONATE BARIUM CATION ATROPA BELLADONNA ATROPA BELLADONNA BORRELIA BURGDORFERI BORRELIA BURGDORFERI BOTHROPS ATROX VENOM BOTHROPS ATROX VENOM LYCOPERDON UTRIFORME FRUITING BODY LYCOPERDON UTRIFORME FRUITING BODY BROMINE BROMINE CADMIUM SULFATE CADMIUM CATION DIEFFENBACHIA SEGUINE DIEFFENBACHIA SEGUINE OYSTER SHELL CALCIUM CARBONATE, CRUDE OYSTER SHELL CALCIUM CARBONATE, CRUDE CAMPHOR (NATURAL) CAMPHOR (NATURAL) PHENOL PHENOL MILK THISTLE MILK THISTLE CEANOTHUS AMERICANUS LEAF CEANOTHUS AMERICANUS LEAF CHELIDONIUM MAJUS CHELIDONIUM MAJUS QUININE SULFATE QUININE ARTEMISIA CINA PRE-FLOWERING TOP ARTEMISIA CINA PRE-FLOWERING TOP CINCHONA OFFICINALIS BARK CINCHONA OFFICINALIS BARK CICUTA VIROSA ROOT CICUTA VIROSA ROOT COBALT COBALT COLCHICUM AUTUMNALE BULB COLCHICUM AUTUMNALE BULB CONIUM MACULATUM FLOWERING TOP CONIUM MACULATUM FLOWERING TOP CROTALUS HORRIDUS HORRIDUS VENOM CROTALUS HORRIDUS HORRIDUS VENOM CROTON TIGLIUM SEED CROTON TIGLIUM SEED COPPER COPPER SOLANUM DULCAMARA TOP SOLANUM DULCAMARA TOP MICRURUS CORALLINUS VENOM MICRURUS CORALLINUS VENOM EUPATORIUM PERFOLIATUM FLOWERING TOP EUPATORIUM PERFOLIATUM FLOWERING TOP HYDROFLUORIC ACID FLUORIDE ION GALPHIMIA GLAUCA FLOWERING TOP GALPHIMIA GLAUCA FLOWERING TOP GRAPHITE GRAPHITE HAMAMELIS VIRGINIANA ROOT BARK/STEM BARK HAMAMELIS VIRGINIANA ROOT BARK/STEM BARK HEKLA LAVA HEKLA LAVA HELLEBORUS NIGER ROOT HELLEBORUS NIGER ROOT CALCIUM SULFIDE CALCIUM SULFIDE HYDROGEN CYANIDE HYDROGEN CYANIDE HYOSCYAMUS NIGER HYOSCYAMUS NIGER HYPERICUM PERFORATUM HYPERICUM PERFORATUM POTASSIUM BROMIDE BROMIDE ION POTASSIUM CARBONATE CARBONATE ION POTASSIUM IODIDE IODIDE ION LATHYRUS SATIVAS SEED LATHYRUS SATIVAS SEED PRUNUS LAUROCERASUS LEAF PRUNUS LAUROCERASUS LEAF LEDUM PALUSTRE TWIG LEDUM PALUSTRE TWIG LOBELIA INFLATA LOBELIA INFLATA MERCURIC CYANIDE MERCURIC CYANIDE MERCURIUS SOLUBILIS MERCURIUS SOLUBILIS DAPHNE MEZEREUM BARK DAPHNE MEZEREUM BARK MOSCHUS MOSCHIFERUS WHOLE MOSCHUS MOSCHIFERUS WHOLE HYDROCHLORIC ACID HYDROCHLORIC ACID NAJA NAJA VENOM NAJA NAJA VENOM SODIUM CARBONATE CARBONATE ION NITRIC ACID NITRIC ACID NUTMEG NUTMEG RANCID BEEF RANCID BEEF PHOSPHORIC ACID PHOSPHORIC ACID PICRIC ACID PICRIC ACID LEAD LEAD TOXICODENDRON PUBESCENS LEAF TOXICODENDRON PUBESCENS LEAF RUTA GRAVEOLENS FLOWERING TOP RUTA GRAVEOLENS FLOWERING TOP SAMBUCUS NIGRA FLOWERING TOP SAMBUCUS NIGRA FLOWERING TOP SANGUINARIA CANADENSIS ROOT SANGUINARIA CANADENSIS ROOT SARRACENIA PURPUREA SARRACENIA PURPUREA CLAVICEPS PURPUREA SCLEROTIUM CLAVICEPS PURPUREA SCLEROTIUM SEPIA OFFICINALIS JUICE SEPIA OFFICINALIS JUICE DATURA STRAMONIUM DATURA STRAMONIUM SULFURIC ACID SULFURIC ACID TOBACCO LEAF TOBACCO LEAF LYCOSA TARANTULA LYCOSA TARANTULA TURPENTINE OIL TURPENTINE OIL TEUCRIUM MARUM TEUCRIUM MARUM VERATRUM ALBUM ROOT VERATRUM ALBUM ROOT VERATRUM VIRIDE ROOT VERATRUM VIRIDE ROOT VIPERA BERUS VENOM VIPERA BERUS VENOM"
+      ],
+      "active_ingredient": [
+        "ACTIVE INGREDIENTS (HPUS*) PURPOSE**: ABROTANUM 6C (intestines), ACONITUM NAPELLUS 1M (shock), AETHUSA CYNAPIUM 200C (dairy intolerance), AGNUS CASTUS 200C (impotence/absentmindedness), AILANTHUS GLANDULOSUS 30C (fever/glands), AMBRA GRISEA 30C (confusion/memory), AMBROSIA ARTEMISIAEFOLIA 30C (itchy eyelids), AMMONIUM CARBONICUM 30C (breathing), ANTIMONIUM CRUDUM 6C, 200C (rash), APIS MELLIFICA 1M (swellings), ARNICA MONTANA 3C, 1M (injury), ARSENICUM ALBUM 3C (gastrointestinal), AURUM ARSENICOSUM 200C (infection), AURUM METALLICUM 200C (depression/fatigue), BAPTISIA TINCTORIA 200C (fever/soreness), BARYTA CARBONICA 30C (memory loss), BELLADONNA 3C (pain/fever), BORRELIA BURGDORFERI 200C (tick), BOTHROPS LANCEOLATUS 30C (heart), BOVISTA 30C (suffocation), BROMIUM 30C (radiation), CADMIUM SULPHURICUM 30C (vomiting), CALADIUM SEGUINUM 30C (insect bites), CALCAREA CARBONICA 1M (immunity), CAMPHORA 200C (collapse/antidoting), CARBOLICUM ACIDUM 6C, 30C (infection/swelling), CARDUUS MARIANUS 30C (liver), CEANOTHUS AMERICANUS 30C (radiation/spleen), CHELIDONIUM MAJUS 6C (gastrointestinal), CHININUM SULPHURICUM 3X (fever) CINA 3X, 200C (parasites), CINCHONA (CHINA) OFFICINALIS 3C (fluid loss), CICUTA VIROSA 30C (head injury), COBALTUM METALLICUM 30C (radiation), COLCHICUM AUTUMNALE 30C (dysentery), CONIUM MACULATUM 3C (weakness/growths), CROTALUS HORRIDUS 6C, 30C (hemorrhage), CROTON TIGLIUM 30C (skin eruptions/diarrhea), CUPRUM METALLICUM 6C, 200C (spasms/cramps), DULCAMARA 30C (throat/ringworm), ELAPS CORALLINUS 30C (bleeding), EUPATORIUM PERFOLIATUM 200C (fever), GALPHIMIA GLAUCA 30C (hay fever), GRAPHITES 200C (skin eruptions), GUNPOWDER 30C (infection), HAMAMELIS VIRGINIANA 200C (circulation), HEKLA LAVA 30C (abscessed tooth), HELLEBORUS NIGER 30C (concentration), HEPAR SULPHURIS CALCAREUM 6C (infection), HYDROCYANICUM ACIDUM 30C (rigidity), HYDROFLUORICUM ACIDUM 30C (PTSD, abscess, sleep), HYOSCYAMUS NIGER 6C, 30C (delirium), HYPERICUM PERFORATUM 1M (extreme pain/nerve pain), KALI BROMATUM 30C (staggering), KALI CARBONICUM 200C (respiration), KALI IODATUM 6C (wheezy), LATHYRUS SATIVUS 30C (weakness), LAUROCERASUS 30C (breathlessness/collapse), LEDUM PALUSTRE 1M (puncture injury), LOBELIA INFLATA 30C (breathing difficulty), MERCURIUS CYANATUS 200C (throat), MERCURIUS SOLUBILIS 6C, 200C (throat), MEZEREUM 200C (bones), MOSCHUS 30C (fainting/vertigo), MURIATICUM ACIDUM 30C (weakness/exhaustion), NAJA TRIPUDIANS 30C (heart), NATRUM CARBONICUM 30C (weakness/heat stroke), NITRICUM ACIDUM 30C (anger), NUX MOSCHATA 30C (faintness), PYROGENIUM 200C (infections), PHOSPHORICUM ACIDUM 6C, 200C (exhaustion), PICRICUM ACIDUM 200C (headache/exhaustion), PLUMBUM METALLICUM 30C (weakness/constipation), RHUS TOX 1M (joints), RUTA GRAVEOLENS 6C (tendons), SAMBUCUS NIGRA 30C (breathing/cough), SANGUINARIA CANADENSIS 200C (sinus), SARRACENIA PURPUREA 30C (pustules), SECALE CORNUTUM 6C (internal bleeding), SEPIA 6C (menstrual/headache), STRAMONIUM 30C, 200C (rage), SULPHURICUM ACIDUM 30C (dyspnea), TABACUM 30C, 200C (nausea), TARENTULA HISPANA 30C (restlessness), TEREBINTHINA 6C (urinary problems), TEUCRIUM MARUM 200C (gastrointestinal/nasal), VERATRUM ALBUM 200C (diarrhea/weakness), VERATRUM VIRIDE 30C (infection/pustules), VIPERA BERUS 30C (severe nose bleed). *The letters \u201cHPUS\u201d indicate that the components in this product are officially monographed in the Homeopathic Pharmacopeia of the United States. **This statement has not been evaluated by the FDA. It is based on documented Homeopathic Materia Medica."
+      ],
+      "other_safety_information": [
+        "*The letters \u201cHPUS\u201d indicate that the components in this product are officially monographed in the Homeopathic Pharmacopeia of the United States. **This statement has not been evaluated by the FDA. It is based on documented Homeopathic Materia Medica.",
+        "TAMPER EVIDENT: Do not use if individual vial seal is missing or broken."
+      ],
+      "indications_and_usage": [
+        "ACTIVE INGREDIENTS (HPUS*) PURPOSE**: ABROTANUM 6C (intestines), ACONITUM NAPELLUS 1M (shock), AETHUSA CYNAPIUM 200C (dairy intolerance), AGNUS CASTUS 200C (impotence/absentmindedness), AILANTHUS GLANDULOSUS 30C (fever/glands), AMBRA GRISEA 30C (confusion/memory), AMBROSIA ARTEMISIAEFOLIA 30C (itchy eyelids), AMMONIUM CARBONICUM 30C (breathing), ANTIMONIUM CRUDUM 6C, 200C (rash), APIS MELLIFICA 1M (swellings), ARNICA MONTANA 3C, 1M (injury), ARSENICUM ALBUM 3C (gastrointestinal), AURUM ARSENICOSUM 200C (infection), AURUM METALLICUM 200C (depression/fatigue), BAPTISIA TINCTORIA 200C (fever/soreness), BARYTA CARBONICA 30C (memory loss), BELLADONNA 3C (pain/fever), BORRELIA BURGDORFERI 200C (tick), BOTHROPS LANCEOLATUS 30C (heart), BOVISTA 30C (suffocation), BROMIUM 30C (radiation), CADMIUM SULPHURICUM 30C (vomiting), CALADIUM SEGUINUM 30C (insect bites), CALCAREA CARBONICA 1M (immunity), CAMPHORA 200C (collapse/antidoting), CARBOLICUM ACIDUM 6C, 30C (infection/swelling), CARDUUS MARIANUS 30C (liver), CEANOTHUS AMERICANUS 30C (radiation/spleen), CHELIDONIUM MAJUS 6C (gastrointestinal), CHININUM SULPHURICUM 3X (fever) CINA 3X, 200C (parasites), CINCHONA (CHINA) OFFICINALIS 3C (fluid loss), CICUTA VIROSA 30C (head injury), COBALTUM METALLICUM 30C (radiation), COLCHICUM AUTUMNALE 30C (dysentery), CONIUM MACULATUM 3C (weakness/growths), CROTALUS HORRIDUS 6C, 30C (hemorrhage), CROTON TIGLIUM 30C (skin eruptions/diarrhea), CUPRUM METALLICUM 6C, 200C (spasms/cramps), DULCAMARA 30C (throat/ringworm), ELAPS CORALLINUS 30C (bleeding), EUPATORIUM PERFOLIATUM 200C (fever), GALPHIMIA GLAUCA 30C (hay fever), GRAPHITES 200C (skin eruptions), GUNPOWDER 30C (infection), HAMAMELIS VIRGINIANA 200C (circulation), HEKLA LAVA 30C (abscessed tooth), HELLEBORUS NIGER 30C (concentration), HEPAR SULPHURIS CALCAREUM 6C (infection), HYDROCYANICUM ACIDUM 30C (rigidity), HYDROFLUORICUM ACIDUM 30C (PTSD, abscess, sleep), HYOSCYAMUS NIGER 6C, 30C (delirium), HYPERICUM PERFORATUM 1M (extreme pain/nerve pain), KALI BROMATUM 30C (staggering), KALI CARBONICUM 200C (respiration), KALI IODATUM 6C (wheezy), LATHYRUS SATIVUS 30C (weakness), LAUROCERASUS 30C (breathlessness/collapse), LEDUM PALUSTRE 1M (puncture injury), LOBELIA INFLATA 30C (breathing difficulty), MERCURIUS CYANATUS 200C (throat), MERCURIUS SOLUBILIS 6C, 200C (throat), MEZEREUM 200C (bones), MOSCHUS 30C (fainting/vertigo), MURIATICUM ACIDUM 30C (weakness/exhaustion), NAJA TRIPUDIANS 30C (heart), NATRUM CARBONICUM 30C (weakness/heat stroke), NITRICUM ACIDUM 30C (anger), NUX MOSCHATA 30C (faintness), PYROGENIUM 200C (infections), PHOSPHORICUM ACIDUM 6C, 200C (exhaustion), PICRICUM ACIDUM 200C (headache/exhaustion), PLUMBUM METALLICUM 30C (weakness/constipation), RHUS TOX 1M (joints), RUTA GRAVEOLENS 6C (tendons), SAMBUCUS NIGRA 30C (breathing/cough), SANGUINARIA CANADENSIS 200C (sinus), SARRACENIA PURPUREA 30C (pustules), SECALE CORNUTUM 6C (internal bleeding), SEPIA 6C (menstrual/headache), STRAMONIUM 30C, 200C (rage), SULPHURICUM ACIDUM 30C (dyspnea), TABACUM 30C, 200C (nausea), TARENTULA HISPANA 30C (restlessness), TEREBINTHINA 6C (urinary problems), TEUCRIUM MARUM 200C (gastrointestinal/nasal), VERATRUM ALBUM 200C (diarrhea/weakness), VERATRUM VIRIDE 30C (infection/pustules), VIPERA BERUS 30C (severe nose bleed)."
+      ],
+      "warnings": [
+        "WARNINGS: Consult a physician for use in children under 12 years of age. IF PREGNANT OR BREASTFEEDING, ask a health care professional before use. In case of overdose (or accidental ingestion) get medical help or contact a Poison Control Center right away. KEEP OUT OF THE REACH OF CHILDREN."
+      ],
+      "keep_out_of_reach_of_children": [
+        "KEEP OUT OF THE REACH OF CHILDREN."
+      ],
+      "dosage_and_administration": [
+        "DIRECTIONS: Adults and children above 12 years: dissolve 3-5 pellets under the tongue or dilute in approximately 1 oz of purified water and sip as directed by a health care professional."
+      ],
+      "inactive_ingredient": [
+        "INACTIVE INGREDIENTS: Sucrose. Lactose and gluten free."
+      ],
+      "questions": [
+        "MFG. FOR: Joette Calabrese, Inc. www.JoetteCalabrese.com PH: 716-941-1045"
+      ],
+      "package_label_principal_display_panel": [
+        "NDC: 66096-712-27 Joette Calabrese Survivalist Kit HOMEOPATHIC MEDICINE CONTENTS: 100 vials of 1 gram each (filled by weight not volume). kit box label"
+      ],
+      "purpose": [
+        ""
+      ],
+      "set_id": "1ac2a2c4-704e-4efa-aa44-acc71d300f70",
+      "id": "d44ac4d7-4c0a-f937-e053-2995a90ac3dc",
+      "effective_time": "20211229",
+      "version": "4",
+      "openfda": {
+        "brand_name": [
+          "Joette Calabrese Survivalist Kit"
+        ],
+        "generic_name": [
+          "ABROT ACON AGN AIL AMBR AMBRO AM-C ANT-C APIS ARN ARS AUR-A AUR BAPT BAR-C BELL BB BOTH BOV BROM CADM-S CALAD CALC CAMPH CARB-AC CARD-M CEAN CHEL CHININ-A CINA CHIN CIC COB COLCH CON CROT-H CROT-T CUPR DULC ELAPS EUP-PER FL-AC GALPH GRAPH GUNP HAM HEKLA HELL HEP HYDR-AC HYOS HYPER KALI-BR KALI-C KALI-I LATH LAUR LED LOB MERC-CY MERC MEZ MOSCH MUR-AC NAJA NAT-C NIT-AC NUX-M PYROG PH-AC PIC-AC PLB RHUS-T RUTA SAMB SANG SARR SEP STRAM SUL-AC TAB TERENT TER TEUCR VERAT VERAT-V VIP"
+        ],
+        "manufacturer_name": [
+          "OHM PHARMA INC."
+        ],
+        "product_ndc": [
+          "66096-712"
+        ],
+        "product_type": [
+          "HUMAN OTC DRUG"
+        ],
+        "route": [
+          "ORAL"
+        ],
+        "substance_name": [
+          "ACONITUM NAPELLUS",
+          "AETHUSA CYNAPIUM",
+          "AILANTHUS ALTISSIMA FLOWERING TWIG",
+          "AMBERGRIS",
+          "AMBROSIA ARTEMISIIFOLIA POLLEN",
+          "AMMONIUM CARBONATE",
+          "ANTIMONY TRISULFIDE",
+          "APIS MELLIFERA",
+          "ARNICA MONTANA",
+          "ARSENIC TRIOXIDE",
+          "ARTEMISIA ABROTANUM FLOWERING TOP",
+          "ARTEMISIA CINA PRE-FLOWERING TOP",
+          "ATROPA BELLADONNA",
+          "BAPTISIA TINCTORIA ROOT",
+          "BARIUM CARBONATE",
+          "BORRELIA BURGDORFERI",
+          "BOTHROPS ATROX VENOM",
+          "BROMINE",
+          "CADMIUM SULFATE",
+          "CALCIUM SULFIDE",
+          "CAMPHOR (NATURAL)",
+          "CEANOTHUS AMERICANUS LEAF",
+          "CHASTE TREE",
+          "CHELIDONIUM MAJUS",
+          "CICUTA VIROSA ROOT",
+          "CINCHONA OFFICINALIS BARK",
+          "CLAVICEPS PURPUREA SCLEROTIUM",
+          "COBALT",
+          "COLCHICUM AUTUMNALE BULB",
+          "CONIUM MACULATUM FLOWERING TOP",
+          "COPPER",
+          "CROTALUS HORRIDUS HORRIDUS VENOM",
+          "CROTON TIGLIUM SEED",
+          "DAPHNE MEZEREUM BARK",
+          "DATURA STRAMONIUM",
+          "DIEFFENBACHIA SEGUINE",
+          "EUPATORIUM PERFOLIATUM FLOWERING TOP",
+          "GALPHIMIA GLAUCA FLOWERING TOP",
+          "GOLD",
+          "GRAPHITE",
+          "HAMAMELIS VIRGINIANA ROOT BARK/STEM BARK",
+          "HEKLA LAVA",
+          "HELLEBORUS NIGER ROOT",
+          "HYDROCHLORIC ACID",
+          "HYDROFLUORIC ACID",
+          "HYDROGEN CYANIDE",
+          "HYOSCYAMUS NIGER",
+          "HYPERICUM PERFORATUM",
+          "LATHYRUS SATIVAS SEED",
+          "LEAD",
+          "LEDUM PALUSTRE TWIG",
+          "LOBELIA INFLATA",
+          "LYCOPERDON UTRIFORME FRUITING BODY",
+          "LYCOSA TARANTULA",
+          "MERCURIC CYANIDE",
+          "MERCURIUS SOLUBILIS",
+          "MICRURUS CORALLINUS VENOM",
+          "MILK THISTLE",
+          "MOSCHUS MOSCHIFERUS WHOLE",
+          "NAJA NAJA VENOM",
+          "NITRIC ACID",
+          "NUTMEG",
+          "OYSTER SHELL CALCIUM CARBONATE, CRUDE",
+          "PHENOL",
+          "PHOSPHORIC ACID",
+          "PICRIC ACID",
+          "POTASSIUM BROMIDE",
+          "POTASSIUM CARBONATE",
+          "POTASSIUM IODIDE",
+          "PRUNUS LAUROCERASUS LEAF",
+          "QUININE SULFATE",
+          "RANCID BEEF",
+          "RUTA GRAVEOLENS FLOWERING TOP",
+          "SAMBUCUS NIGRA FLOWERING TOP",
+          "SANGUINARIA CANADENSIS ROOT",
+          "SARRACENIA PURPUREA",
+          "SEPIA OFFICINALIS JUICE",
+          "SODIUM CARBONATE",
+          "SOLANUM DULCAMARA TOP",
+          "SULFURIC ACID",
+          "TEUCRIUM MARUM",
+          "TOBACCO LEAF",
+          "TOXICODENDRON PUBESCENS LEAF",
+          "TURPENTINE OIL",
+          "VERATRUM ALBUM ROOT",
+          "VERATRUM VIRIDE ROOT",
+          "VIPERA BERUS VENOM"
+        ],
+        "spl_id": [
+          "d44ac4d7-4c0a-f937-e053-2995a90ac3dc"
+        ],
+        "spl_set_id": [
+          "1ac2a2c4-704e-4efa-aa44-acc71d300f70"
+        ],
+        "package_ndc": [
+          "66096-712-27"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "nui": [
+          "N0000185006",
+          "N0000175629",
+          "N0000184306",
+          "N0000185001",
+          "M0017130",
+          "M0000728",
+          "N0000185021",
+          "M0002274",
+          "N0000185508",
+          "M0005152",
+          "N0000175831",
+          "N0000008595",
+          "N0000008924",
+          "N0000175830",
+          "N0000185371",
+          "N0000185375",
+          "M0016962",
+          "M0006342",
+          "M0008672",
+          "M0516536"
+        ],
+        "pharm_class_epc": [
+          "Standardized Pollen Allergenic Extract [EPC]",
+          "Standardized Insect Venom Allergenic Extract [EPC]",
+          "Standardized Chemical Allergen [EPC]",
+          "Copper-containing Intrauterine Device [EPC]",
+          "Non-Standardized Food Allergenic Extract [EPC]",
+          "Non-Standardized Plant Allergenic Extract [EPC]"
+        ],
+        "pharm_class_pe": [
+          "Increased Histamine Release [PE]",
+          "Cell-mediated Immunity [PE]",
+          "Increased IgG Production [PE]",
+          "Decreased Embryonic Implantation [PE]",
+          "Decreased Sperm Motility [PE]",
+          "Inhibit Ovum Fertilization [PE]"
+        ],
+        "pharm_class_cs": [
+          "Pollen [CS]",
+          "Allergens [CS]",
+          "Bee Venoms [CS]",
+          "Copper [CS]",
+          "Plant Proteins [CS]",
+          "Dietary Proteins [CS]",
+          "Food Additives [CS]",
+          "Seed Storage Proteins [CS]"
+        ],
+        "unii": [
+          "U0NQ8555JD",
+          "M6936L953C",
+          "8P29O5P7XU",
+          "XTC0D02P6C",
+          "K20Y81ACO3",
+          "NJ5VT0FKLJ",
+          "F79059A38U",
+          "7S82P3R43Z",
+          "O80TY208ZW",
+          "S7V92P67HO",
+          "QG07G580U0",
+          "28M1820ACT",
+          "WQZ3G9PF0H",
+          "5EF0HWI5WU",
+          "6P669D8HQ8",
+          "0J8NV9V5Q8",
+          "K0Q6REZ9JC",
+          "SBV4XY874G",
+          "947UNF3Z6O",
+          "1MBW07J51Q",
+          "N20HL7Q941",
+          "25B1Y14T8N",
+          "433OSF3U8A",
+          "7E889U5RNN",
+          "YEA9P21S8N",
+          "S003A158SB",
+          "01G9XEA93N",
+          "3G0H8C9362",
+          "993QHL78E6",
+          "Q28R5GF371",
+          "789U1901C5",
+          "YHA2XLJ956",
+          "0HK2GZK66E",
+          "X2N6E405GV",
+          "G6W4F0V8Z3",
+          "01800C6E6B",
+          "1W0775VX6E",
+          "93PH5Q8M7E",
+          "79Y1949PYO",
+          "4QQN74LH4O",
+          "T7S323PKJS",
+          "C21158IIRK",
+          "608DGJ6815",
+          "QTT17582CB",
+          "RGL5YE86CZ",
+          "2WTB3V159F",
+          "4WRK2153H3",
+          "XK4IUX8MNB",
+          "8VP54WOT4I",
+          "2P299V784P",
+          "877L01IZ0P",
+          "9PP1T3TC5U",
+          "K2A74U428F",
+          "86M454L2TT",
+          "RWG7BD1032",
+          "324Y4038G2",
+          "V0S6H36980",
+          "U946SH95EE",
+          "W5Y0EFG88O",
+          "ZZ4AG7L7VM",
+          "411VRN1TV4",
+          "AEE24M3MQ9",
+          "2E32821G6I",
+          "339NCG44TV",
+          "E4GA8884NN",
+          "A49OS0F91S",
+          "OSD78555ZM",
+          "BQN1B9B9HA",
+          "1C4QK22F9J",
+          "F26P2D4757",
+          "KF7Z0E0Q2B",
+          "29SUH5R3HU",
+          "N94C2U587S",
+          "CT03BSA18U",
+          "N9288CD508",
+          "FOP08H143P",
+          "QDL83WN8C2",
+          "45P3261C7T",
+          "KPS1B1162N",
+          "O40UQP6WCF",
+          "10464S0TAA",
+          "6YR2608RSU",
+          "6IO182RP7A",
+          "C5H0QJ6V7F",
+          "QNS6W5US1Z",
+          "197B3Q7T5Q",
+          "0ORO6NCA4M"
+        ]
+      }
+    }
+  ]
+}

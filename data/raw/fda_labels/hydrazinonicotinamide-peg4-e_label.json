@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2026-01-24",
+    "results": {
+      "skip": 0,
+      "limit": 1,
+      "total": 31
+    }
+  },
+  "results": [
+    {
+      "spl_product_data_elements": [
+        "Dove Vitamin E and Kukui Nut Oil Soothing Post-Shave 48h Antiperspirant Deodorant LINALOOL, (+/-)- BENZYL SALICYLATE GLYCERIN CETYL PEG/PPG-10/1 DIMETHICONE (HLB 4) GLYCINE SHEA BUTTER KUKUI NUT OIL 12-HYDROXYSTEARIC ACID ISOMETHYL-.ALPHA.-IONONE ALKYL (C12-15) BENZOATE BENZYL ALCOHOL SUNFLOWER OIL CYCLOMETHICONE 5 CALCIUM CHLORIDE WATER SYNTHETIC WAX (1200 MW) ALUMINUM SESQUICHLOROHYDRATE ALUMINUM SESQUICHLOROHYDRATE LIMONENE, (+)- COUMARIN"
+      ],
+      "description": [
+        "SHEA MOISTURE RAW VITAMIN E & KUKUI NUT OIL POST-SHAVE 48H ANTIPERSPIRANT DEODORANT - aluminum sesquichlorohydrate stick"
+      ],
+      "active_ingredient": [
+        "Drug Facts Active ingredient Aluminum Sesquichlorohydrate (12.2)"
+      ],
+      "purpose": [
+        "Purpose antiperspirant"
+      ],
+      "indications_and_usage": [
+        "Uses reduces underarm wetness"
+      ],
+      "warnings": [
+        "Warnings \u2022 For external use only. \u2022 Do not use on broken skin . \u2022 Ask a doctor before use if you have kidney disease. \u2022 Stop use if rash or irritation occurs."
+      ],
+      "keep_out_of_reach_of_children": [
+        "\u2022 Keep out of reach of children. If swallowed, get medical help or contact a Poison Control Center right away."
+      ],
+      "dosage_and_administration": [
+        "Directions apply to underarms only"
+      ],
+      "inactive_ingredient": [
+        "Inactive ingredients Water (Aqua), Synthetic Wax, Cyclopentasiloxane, Glycerin, C12-15 Alkyl Benzoate, Niacinamide, Calcium Chloride, Fragrance (Parfum), Cetyl PEG/PPG-10/1 Dimethicone, Glycine, Helianthus Annuus (Sunflower) Seed Oil, Butyrospermum Parkii (Shea) Butter, Aleurites Moluccanus Seed Oil, Hydroxystearic Acid, Alpha-Isomethyl Ionone, Benzyl Alcohol, Benzyl Salicylate. Coumarin, Limonene, Linalool"
+      ],
+      "questions": [
+        "Questions? Call 1-800-761-3683"
+      ],
+      "package_label_principal_display_panel": [
+        "Packaging Shea Moisture Soothing AP Deo"
+      ],
+      "set_id": "03963e9b-f7b4-f947-e063-6394a90ad004",
+      "id": "253d03be-e068-1bdf-e063-6294a90a6e50",
+      "effective_time": "20241024",
+      "version": "2",
+      "openfda": {
+        "application_number": [
+          "M019"
+        ],
+        "brand_name": [
+          "Dove"
+        ],
+        "generic_name": [
+          "VITAMIN E AND KUKUI NUT OIL SOOTHING POST-SHAVE 48H ANTIPERSPIRANT DEODORANT"
+        ],
+        "manufacturer_name": [
+          "Conopco Inc. d/b/a/ Unilever"
+        ],
+        "product_ndc": [
+          "64942-2170"
+        ],
+        "product_type": [
+          "HUMAN OTC DRUG"
+        ],
+        "route": [
+          "TOPICAL"
+        ],
+        "substance_name": [
+          "ALUMINUM SESQUICHLOROHYDRATE"
+        ],
+        "spl_id": [
+          "253d03be-e068-1bdf-e063-6294a90a6e50"
+        ],
+        "spl_set_id": [
+          "03963e9b-f7b4-f947-e063-6394a90ad004"
+        ],
+        "package_ndc": [
+          "64942-2170-1"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "unii": [
+          "UCN889409V"
+        ]
+      }
+    }
+  ]
+}
