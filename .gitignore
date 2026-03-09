@@ -31,12 +31,13 @@ AGENTS.md
 
 # Data files (large files not in git)
 data/interim/*
-data/processed/*
+data/processed/embeddings/*
+data/processed/extractions/*
+data/processed/vectorstore/*
 !data/raw/.gitkeep
 !data/raw/sample_queries.json
 !data/interim/.gitkeep
 !data/processed/.gitkeep
-**/*.csv
 **/*.txt
 **/*.jpg
 **/*.jpeg
