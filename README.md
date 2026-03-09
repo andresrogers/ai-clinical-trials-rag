@@ -44,6 +44,10 @@ Practical notes from the current run:
   - Loads the master dataset and RAG‑ready subset, prints schema and summary stats, and documents dataset characteristics (missingness, class imbalance, richness score).
   - Useful artifacts: confirms `master_ai_trials_dataset.csv` (127 trials) and `rag_ready` counts.
 
+  | Missing data heatmap | Target (success) distribution |
+  |:---:|:---:|
+  | ![Missing data heatmap](reports/figures/01_missing_data_heatmap.png) | ![Target distribution](reports/figures/02_target_distribution.png) |
+
 - [notebooks/02_ingest_to_chroma.ipynb](notebooks/02_ingest_to_chroma.ipynb) — Document parsing, chunking, embedding, and upsert
   - Section‑aware PDF parsing, PubMed XML parsing, and FDA JSON parsing.
   - Uses `HybridScientificChunker` to create semantically coherent chunks with overlap and strong metadata (filename, page, section_title, nct_id, pmid).
@@ -82,6 +86,8 @@ Interpretation:
 - The pipeline shows strong grounding quality (`faithfulness=0.972`) and high overall answer alignment (`factual_correctness=0.901`, `semantic_similarity=0.918`).
 - Retrieval recall is strong (`0.900`), while precision (`0.733`) indicates remaining room to reduce noisy context.
 
+![RAG evaluation metrics](reports/figures/03_rag_evaluation_metrics.png)
+
 ### Notebook 05 Candidate Summary (Phase III NSCLC)
 
 Source: `data/processed/extractions/nsclc_phase3_drug_ranking.csv` (top rows by `evidence_score`).
@@ -97,6 +103,10 @@ Source: `data/processed/extractions/nsclc_phase3_drug_ranking.csv` (top rows by 
 Conclusion:
 - In this current extraction run, the strongest Phase III NSCLC candidates by the notebook's composite evidence heuristic are Selpercatinib, MRTX849, and Anamorelin HCl.
 - These rankings are a prioritization signal for further review by clinicians, not standalone medical recommendations; they should be interpreted with the associated safety evidence and protocol-level context.
+
+| Promising candidates | FDA safety signals |
+|:---:|:---:|
+| ![NSCLC promising candidates](reports/figures/04_nsclc_promising_candidates.png) | ![NSCLC safety signals](reports/figures/05_nsclc_safety_signals.png) |
 
 ---
 
