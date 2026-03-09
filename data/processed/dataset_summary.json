@@ -1,0 +1,36 @@
+{
+  "dataset_name": "AI Drug Discovery Clinical Trials Dataset",
+  "creation_date": "2026-01-25T17:08:54.914263",
+  "total_trials": 127,
+  "rag_ready_trials": 75,
+  "data_sources": {
+    "aact_metadata": 127,
+    "pmc_publications": 122,
+    "pubmed_xml": 71,
+    "pdf_files": 29,
+    "fda_labels": 72
+  },
+  "phase_distribution": {
+    "PHASE3": 127
+  },
+  "success_flag_distribution": {
+    "NO_RESULTS": 86,
+    "LIKELY_PASS": 19,
+    "LIKELY_FAIL": 11,
+    "DEFINITE_FAIL": 11
+  },
+  "top_10_conditions": {
+    "non-small cell lung cancer": 41,
+    "small cell lung cancer": 8,
+    "non small cell lung cancer": 8,
+    "metastatic non-small cell lung cancer": 6,
+    "lung cancer": 6,
+    "lung cancer, non-small cell": 3,
+    "non-squamous non-small cell lung cancer": 3,
+    "non-small cell lung cancer (nsclc)": 3,
+    "non-small cell lung cancer metastatic": 3,
+    "nonsquamous non-small cell lung cancer": 3
+  },
+  "average_data_richness": 54.52755905511811,
+  "ground_truth_template_rows": 200
+}

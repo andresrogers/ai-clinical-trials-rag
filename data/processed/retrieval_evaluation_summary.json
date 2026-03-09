@@ -1,0 +1,23 @@
+{
+  "n_queries": 10,
+  "top_k": 5,
+  "sample_strategy": "random",
+  "seed": 42,
+  "filter_by_nct_id": false,
+  "rerank_candidate_k": 5,
+  "vector": {
+    "precision": 0.9399999999999998,
+    "recall": 0.8614335664335664,
+    "mrr": 0.95
+  },
+  "hybrid": {
+    "precision": 0.96,
+    "recall": 0.8781002331002332,
+    "mrr": 0.95
+  },
+  "hybrid_rerank": {
+    "precision": 0.96,
+    "recall": 0.8697668997668998,
+    "mrr": 0.95
+  }
+}

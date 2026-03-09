@@ -1,0 +1,272 @@
+[
+  {
+    "row_id": 163,
+    "nct_id": "NCT03976375",
+    "question": "For Clinical Study NCT03976375 titled 'Efficacy and Safety of Pembrolizumab (MK-3475) With Lenvatinib (E7080/MK-7902) vs. Docetaxel in Participants With Metastatic Non-Small Cell Lung Cancer (NSCLC) and Progressive Disease (PD) After Platinum Doublet Chemotherapy and Immunotherapy (MK-7902-008/E7080-G000-316/LEAP-008)': What was the primary endpoint of this study, how was it measured (e.g., PFS at 12 months, response rate), and what was the predefined success threshold",
+    "source_count": 4,
+    "vector": {
+      "precision": 0.8,
+      "recall": 0.75,
+      "mrr": 0.5,
+      "hits": 4,
+      "matched_chunks": 3
+    },
+    "hybrid": {
+      "precision": 0.8,
+      "recall": 0.75,
+      "mrr": 0.5,
+      "hits": 4,
+      "matched_chunks": 3
+    },
+    "hybrid_rerank": {
+      "precision": 0.8,
+      "recall": 0.75,
+      "mrr": 0.5,
+      "hits": 4,
+      "matched_chunks": 3
+    }
+  },
+  {
+    "row_id": 28,
+    "nct_id": "NCT03594747",
+    "question": "For Clinical Study NCT03594747 titled 'A Study of Tislelizumab in Combination With Chemotherapy Versus Chemotherapy in Advanced Lung Cancer': What statistical methods were used for the primary analysis (e.g., Kaplan-Meier, Cox regression, ITT vs. per-protocol), including multiplicity corrections",
+    "source_count": 11,
+    "vector": {
+      "precision": 1.0,
+      "recall": 0.8181818181818182,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 9
+    },
+    "hybrid": {
+      "precision": 1.0,
+      "recall": 0.8181818181818182,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 9
+    },
+    "hybrid_rerank": {
+      "precision": 1.0,
+      "recall": 0.8181818181818182,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 9
+    }
+  },
+  {
+    "row_id": 6,
+    "nct_id": "NCT04205812",
+    "question": "For Clinical Study NCT04205812 titled 'Platinum-Based Chemotherapy With/Without INCMGA00012, an Anti-PD-1 Antibody, in Non-Small Cell Lung Cancer': Summarize the key secondary endpoint findings with hazard ratios, odds ratios, or mean differences, and note any significant adjustments",
+    "source_count": 13,
+    "vector": {
+      "precision": 1.0,
+      "recall": 0.8461538461538461,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 11
+    },
+    "hybrid": {
+      "precision": 1.0,
+      "recall": 0.8461538461538461,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 11
+    },
+    "hybrid_rerank": {
+      "precision": 1.0,
+      "recall": 0.8461538461538461,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 11
+    }
+  },
+  {
+    "row_id": 189,
+    "nct_id": "NCT03521154",
+    "question": "For Clinical Study NCT03521154 titled 'A Global Study to Assess the Effects of Osimertinib Following Chemoradiation in Patients With Stage III Unresectable Non-small Cell Lung Cancer (LAURA)': Did this clinical study incorporate any AI innovations, such as AI-driven patient recruitment, Ai-drug discovery, predictive modeling for outcomes, or image analysis for endpoints",
+    "source_count": 5,
+    "vector": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 5
+    },
+    "hybrid": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 5
+    },
+    "hybrid_rerank": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 5
+    }
+  },
+  {
+    "row_id": 70,
+    "nct_id": "NCT03829332",
+    "question": "For Clinical Study NCT03829332 titled 'Efficacy and Safety Study of Pembrolizumab (MK-3475) With or Without Lenvatinib (MK-7902/E7080) in Adults With Programmed Cell Death-Ligand 1 (PD-L1)-Positive Treatment-naïve Nonsmall Cell Lung Cancer (NSCLC) (MK-7902-007/E7080-G000-314/LEAP-007)': What were the exact inclusion criteria for participants in this clinical trial, including age range, disease stage, and required biomarkers",
+    "source_count": 12,
+    "vector": {
+      "precision": 1.0,
+      "recall": 0.8333333333333334,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 10
+    },
+    "hybrid": {
+      "precision": 1.0,
+      "recall": 0.8333333333333334,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 10
+    },
+    "hybrid_rerank": {
+      "precision": 1.0,
+      "recall": 0.8333333333333334,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 10
+    }
+  },
+  {
+    "row_id": 62,
+    "nct_id": "NCT03515837",
+    "question": "For Clinical Study NCT03515837 titled 'Study of Pemetrexed + Platinum Chemotherapy With or Without Pembrolizumab (MK-3475) in Adults With Tyrosine Kinase Inhibitor- (TKI)-Resistant Epidermal Growth Factor Receptor- (EGFR)-Mutated Metastatic Non-squamous Non-small Cell Lung Cancer (NSCLC) (MK-3475-789/KEYNOTE-789)': Describe the trial design: Was it randomized, controlled, blinded (single/double), parallel or crossover, and what was the sample size per arm",
+    "source_count": 12,
+    "vector": {
+      "precision": 0.6,
+      "recall": 0.5833333333333334,
+      "mrr": 1.0,
+      "hits": 3,
+      "matched_chunks": 7
+    },
+    "hybrid": {
+      "precision": 0.8,
+      "recall": 0.6666666666666666,
+      "mrr": 1.0,
+      "hits": 4,
+      "matched_chunks": 8
+    },
+    "hybrid_rerank": {
+      "precision": 0.8,
+      "recall": 0.5833333333333334,
+      "mrr": 1.0,
+      "hits": 4,
+      "matched_chunks": 7
+    }
+  },
+  {
+    "row_id": 57,
+    "nct_id": "NCT03703297",
+    "question": "For Clinical Study NCT03703297 titled 'Study of Durvalumab + Tremelimumab, Durvalumab, and Placebo in Limited Stage Small-Cell Lung Cancer in Patients Who Have Not Progressed Following Concurrent Chemoradiation Therapy': What were the most common adverse events (grade 3+), their incidence rates by arm, and any serious events leading to discontinuation",
+    "source_count": 11,
+    "vector": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 11
+    },
+    "hybrid": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 11
+    },
+    "hybrid_rerank": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 11
+    }
+  },
+  {
+    "row_id": 35,
+    "nct_id": "NCT03663205",
+    "question": "For Clinical Study NCT03663205 titled 'A Study Evaluating the Efficacy and Safety of Tislelizumab Versus Chemotherapy in Advanced Non-Squamous Non-small Cell Lung Cancer': What were the primary endpoint results, including point estimates, confidence intervals, p-values, and whether the primary objective was met",
+    "source_count": 12,
+    "vector": {
+      "precision": 1.0,
+      "recall": 0.9166666666666666,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 11
+    },
+    "hybrid": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 12
+    },
+    "hybrid_rerank": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 12
+    }
+  },
+  {
+    "row_id": 188,
+    "nct_id": "NCT03521154",
+    "question": "For Clinical Study NCT03521154 titled 'A Global Study to Assess the Effects of Osimertinib Following Chemoradiation in Patients With Stage III Unresectable Non-small Cell Lung Cancer (LAURA)': What statistical methods were used for the primary analysis (e.g., Kaplan-Meier, Cox regression, ITT vs. per-protocol), including multiplicity corrections",
+    "source_count": 5,
+    "vector": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 5
+    },
+    "hybrid": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 5
+    },
+    "hybrid_rerank": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 5
+    }
+  },
+  {
+    "row_id": 26,
+    "nct_id": "NCT03594747",
+    "question": "For Clinical Study NCT03594747 titled 'A Study of Tislelizumab in Combination With Chemotherapy Versus Chemotherapy in Advanced Lung Cancer': Summarize the key secondary endpoint findings with hazard ratios, odds ratios, or mean differences, and note any significant adjustments",
+    "source_count": 15,
+    "vector": {
+      "precision": 1.0,
+      "recall": 0.8666666666666667,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 13
+    },
+    "hybrid": {
+      "precision": 1.0,
+      "recall": 0.8666666666666667,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 13
+    },
+    "hybrid_rerank": {
+      "precision": 1.0,
+      "recall": 0.8666666666666667,
+      "mrr": 1.0,
+      "hits": 5,
+      "matched_chunks": 13
+    }
+  }
+]
