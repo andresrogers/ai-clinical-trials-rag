@@ -44,10 +44,6 @@ Practical notes from the current run:
   - Loads the master dataset and RAG‑ready subset, prints schema and summary stats, and documents dataset characteristics (missingness, class imbalance, richness score).
   - Useful artifacts: confirms `master_ai_trials_dataset.csv` (127 trials) and `rag_ready` counts.
 
-  | Missing data heatmap |
-  |:---:|
-  | ![Missing data heatmap](reports/figures/01_missing_data_heatmap.png) | 
-
 - [notebooks/02_ingest_to_chroma.ipynb](notebooks/02_ingest_to_chroma.ipynb) — Document parsing, chunking, embedding, and upsert
   - Section‑aware PDF parsing, PubMed XML parsing, and FDA JSON parsing.
   - Uses `HybridScientificChunker` to create semantically coherent chunks with overlap and strong metadata (filename, page, section_title, nct_id, pmid).
