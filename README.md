@@ -40,27 +40,27 @@ Practical notes from the current run:
 
 ## Notebooks (run in order)
 
-- `notebooks/01_clinical_data_loading.ipynb` — Data loading & inspection
+- [notebooks/01_clinical_data_loading.ipynb](notebooks/01_clinical_data_loading.ipynb) — Data loading & inspection
   - Loads the master dataset and RAG‑ready subset, prints schema and summary stats, and documents dataset characteristics (missingness, class imbalance, richness score).
   - Useful artifacts: confirms `master_ai_trials_dataset.csv` (127 trials) and `rag_ready` counts.
 
-- `notebooks/02_ingest_to_chroma.ipynb` — Document parsing, chunking, embedding, and upsert
+- [notebooks/02_ingest_to_chroma.ipynb](notebooks/02_ingest_to_chroma.ipynb) — Document parsing, chunking, embedding, and upsert
   - Section‑aware PDF parsing, PubMed XML parsing, and FDA JSON parsing.
   - Uses `HybridScientificChunker` to create semantically coherent chunks with overlap and strong metadata (filename, page, section_title, nct_id, pmid).
   - Embeddings are produced by the centralized `Embedder` (OpenRouter/Qwen first, with local fallback) and persisted into Chroma at `data/processed/vectorstore/chroma_db`.
   - Output example: ingestion totals and a sample collection preview (documents + metadata).
 
-- `notebooks/03_retrieval_strategies.ipynb` — Retrieval, ground truth, and LLM drafting
+- [notebooks/03_retrieval_strategies.ipynb](notebooks/03_retrieval_strategies.ipynb) — Retrieval, ground truth, and LLM drafting
   - Builds a defensible ground‑truth pipeline: retrieve top‑K (K=5) chunks per question, draft extractive answers with citations (Draft 1), support human review and refinement (Draft 2 → final JSON).
   - Implements hybrid retrieval options (dense embeddings + BM25) and supports reranking (cross‑encoder) for evaluation experiments.
   - Produces artifacts such as `retrieved_contexts.json`, `draft1_answers.json`, and downstream ground‑truth JSONs.
 
-- `notebooks/04_rag_evaluation.ipynb` — RAGAS evaluation and judge-model scoring
+- [notebooks/04_rag_evaluation.ipynb](notebooks/04_rag_evaluation.ipynb) — RAGAS evaluation and judge-model scoring
   - Evaluates retrieval and generation quality with RAGAS metrics using an OpenRouter judge model (`openai/gpt-4o-mini:floor`).
   - Builds an evaluation set from retrieved contexts, draft answers, and final ground truth.
   - Produces `data/processed/ragas_results.json` with per-row scores and aggregate summaries.
 
-- `notebooks/05_RAG_Extraction.ipynb` — NSCLC extraction dashboard and drug ranking
+- [notebooks/05_RAG_extraction.ipynb](notebooks/05_RAG_extraction.ipynb) — NSCLC extraction dashboard and drug ranking
   - Runs clinician-oriented Q&A for Phase III NSCLC and generates concise answer cards.
   - Builds a composite evidence ranking of candidate therapies and augments each candidate with FDA safety signals from vectorstore retrieval.
   - Produces extraction artifacts in `data/processed/extractions/`, including ranking and safety summaries.
